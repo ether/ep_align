@@ -1,7 +1,7 @@
 {
   "description": "Adds Align Center & Right support",
   "name": "ep_align",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "John McLear <john@mclear.co.uk>",
   "contributors": [],
   "dependencies": {},

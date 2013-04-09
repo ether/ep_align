@@ -6,7 +6,7 @@ var alignClass = 'align';
 var cssFiles = ['ep_align/static/css/editor.css'];
 
 // All our tags are block elements, so we just return them.
-var tags = ['left', 'center', 'right'];
+var tags = ['left', 'center', 'right', 'justify'];
 var aceRegisterBlockElements = function(){
   return tags;
 }
