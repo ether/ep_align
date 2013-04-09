@@ -1,0 +1,16 @@
+{
+  "description": "Adds Align Center & Right support",
+  "name": "ep_align",
+  "version": "0.0.1",
+  "author": "John McLear <john@mclear.co.uk>",
+  "contributors": [],
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johnmclear/ep_align.git"
+  }
+}
