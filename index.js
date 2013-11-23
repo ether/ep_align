@@ -5,7 +5,13 @@ exports.eejsBlock_editbarMenuLeft = function (hook_name, args, cb) {
   return cb();
 }
 
+exports.eejsBlock_dd_format = function (hook_name, args, cb) {
+  args.content = args.content + eejs.require("ep_align/templates/fileMenu.ejs");
+  return cb();
+}
+
 function getInlineStyle(header) {
+ // TODO!
   switch (header) {
   case "h1":
     return "font-size: 2.0em;line-height: 120%;";

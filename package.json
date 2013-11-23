@@ -2,7 +2,10 @@
   "description": "Add Left/Center/Right/Justify to lines of text in a pad",
   "name": "ep_align",
   "version": "0.0.3",
-  "author": "John McLear <john@mclear.co.uk>",
+  "author": {
+    "name": "John McLear",
+    "email": "john@mclear.co.uk"
+  },
   "contributors": [],
   "dependencies": {},
   "engines": {
@@ -12,5 +15,16 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/johnmclear/ep_align.git"
-  }
+  },
+  "readme": "# ep_align\n\n## Function\nAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\n\n## Settings\nNone\n\n## Todo\nExport support\n\nWant further functionality?\nhttp://mclear.co.uk/experience\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/johnmclear/ep_align/issues"
+  },
+  "_id": "ep_align@0.0.3",
+  "dist": {
+    "shasum": "9c71c10ccc09df9154763b8d1ebfcf12297f9cc3"
+  },
+  "_from": "ep_align@",
+  "_resolved": "https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz"
 }

@@ -13,19 +13,26 @@ var aceRegisterBlockElements = function(){
 
 // Bind the event handler to the toolbar buttons
 var postAceInit = function(hook, context){
-  var hs = $('#align-selection');
-  hs.on('change', function(){
-    var value = $(this).val();
-    var intValue = parseInt(value,10);
-    if(!_.isNaN(intValue)){
-      context.ace.callWithAce(function(ace){
-        ace.ace_doInsertalign(intValue);
-      },'insertalign' , true);
-      hs.val("dummy");
-    }
-  })
+  $('.ep_align_left').click(function(){
+    align(context, 0);
+  });
+  $('.ep_align_center').click(function(){
+    align(context, 1);
+  });
+  $('.ep_align_justify').click(function(){
+    align(context, 3);
+  });
+  $('.ep_align_right').click(function(){
+    align(context, 2);
+  });
 };
 
+
+function align(context, alignment){
+  context.ace.callWithAce(function(ace){
+    ace.ace_doInsertalign(alignment);
+  },'insertalign' , true);
+}
 
 
 // Our align attribute will result in a heaading:h1... :h6 class
