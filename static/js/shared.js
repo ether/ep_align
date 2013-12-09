@@ -7,7 +7,6 @@ var collectContentPre = function(hook, context){
   var state = context.state;
   var lineAttributes = state.lineAttributes
   var tagIndex = _.indexOf(tags, tname);
-
   if(tagIndex >= 0){
     lineAttributes['align'] = tags[tagIndex];
   }

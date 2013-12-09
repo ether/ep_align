@@ -35,8 +35,12 @@ function align(context, alignment){
 }
 
 
-// Our align attribute will result in a heaading:h1... :h6 class
+// Our align attribute will result in an align:left...right class
 function aceAttribsToClasses(hook, context){
+  if(context.key.indexOf("align:") !== -1){
+    var align = /(?:^| )align:([A-Za-z0-9]*)/.exec(context.key);
+    return ['align:' + align[1] ];
+  }
   if(context.key == 'align'){
     return ['align:' + context.value ];
   }
@@ -52,8 +56,8 @@ var aceDomLineProcessLineAttributes = function(name, context){
   if (tagIndex !== undefined && tagIndex >= 0){
     var tag = tags[tagIndex];
     var modifier = {
-      preHtml: '<p style="width:100%;text-align:' + tag + '"><span>',
-      postHtml: '</span></p>',
+      preHtml: '<'+tag+'><p style="width:100%;text-align:' + tag + '"><span>',
+      postHtml: '</span></p></'+tag+'>',
       processedMarker: true
     };
     return [modifier];
