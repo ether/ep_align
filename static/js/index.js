@@ -31,6 +31,7 @@ var postAceInit = function(hook, context){
 function align(context, alignment){
   context.ace.callWithAce(function(ace){
     ace.ace_doInsertalign(alignment);
+    ace.ace_focus();
   },'insertalign' , true);
 }
 
