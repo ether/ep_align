@@ -48,7 +48,7 @@ function aceAttribsToClasses(hook, context){
 }
 
 // Here we convert the class align:h1 into a tag
-var aceDomLineProcessLineAttributes = function(name, context){
+var aceDomLinePreProcessLineAttributes = function(name, context){
   var cls = context.cls;
   var domline = context.domline;
   var alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
@@ -57,8 +57,8 @@ var aceDomLineProcessLineAttributes = function(name, context){
   if (tagIndex !== undefined && tagIndex >= 0){
     var tag = tags[tagIndex];
     var modifier = {
-      preHtml: '<'+tag+'><p style="width:100%;text-align:' + tag + '"><span>',
-      postHtml: '</span></p></'+tag+'>',
+      preHtml: '<div style="width:100%;margin:0 auto;list-style-position:inside;text-align:' + tag + '">',
+      postHtml: '</div>',
       processedMarker: true
     };
     return [modifier];
@@ -105,6 +105,6 @@ function aceEditorCSS(){
 exports.aceRegisterBlockElements = aceRegisterBlockElements;
 exports.aceInitialized = aceInitialized;
 exports.postAceInit = postAceInit;
-exports.aceDomLineProcessLineAttributes = aceDomLineProcessLineAttributes;
+exports.aceDomLinePreProcessLineAttributes = aceDomLinePreProcessLineAttributes;
 exports.aceAttribsToClasses = aceAttribsToClasses;
 exports.aceEditorCSS = aceEditorCSS;
