@@ -1,34 +1,46 @@
 <li class="separator acl-write"></li>
-<!--
 <li id="align" class="acl-write">
-    <select id="align-selection">
-        <option value="dummy" selected data-l10n-id="ep_align.align">Align</option>
-        <option value="0" data-l10n-id="ep_align.left">Left</option>
-        <option value="1" data-l10n-id="ep_align.middle">Middle</option>
-        <option value="2" data-l10n-id="ep_align.right">Right</option>
-        <option value="3" data-l10n-id="ep_align.justify">Justify</option>
-    </select>
+  <a class="grouped-left ep_align ep_align_left" title="Align Left">
+    <span class="buttonicon"></span>
+  </a>
 </li>
+<li id="align" class="acl-write">
+  <a class="grouped-middle ep_align ep_align_center" title="Align Center">                         
+    <span class="buttonicon");"></span>
+  </a>
+</li>
+<li id="align" class="acl-write">
+  <a class="grouped-middle ep_align ep_align_justify" title="Align Justify">
+    <span class="buttonicon"></span>
+  </a>
+</li>
+<li id="align" class="acl-write">
+  <a class="grouped-right ep_align ep_align_right" title="Align Right">                         
+    <span class="buttonicon"></span>
+  </a>
+</li>
+<style>
 
-<li class="separator acl-write"></li>
--->
-<li id="align" class="acl-write">
-  <a class="grouped-left ep_align_left" title="Align Left">
-    <span class="buttonicon" style="background-image:url('../static/plugins/ep_align/static/img/left.png');"></span>
-  </a>
-</li>
-<li id="align" class="acl-write">
-  <a class="grouped-middle ep_align_center" title="Align Center">                         
-    <span class="buttonicon" style="background-image:url('../static/plugins/ep_align/static/img/center.png');"></span>
-  </a>
-</li>
-<li id="align" class="acl-write">
-  <a class="grouped-middle ep_align_justify" title="Align Justify">
-    <span class="buttonicon" style="background-image:url('../static/plugins/ep_align/static/img/justify.png');"></span>
-  </a>
-</li>
-<li id="align" class="acl-write">
-  <a class="grouped-right ep_align_right" title="Align Right">                         
-    <span class="buttonicon" style="background-image:url('../static/plugins/ep_align/static/img/right.png');"></span>
-  </a>
-</li>
+  .ep_align{
+    font-family:font-awesome;
+
+  }
+
+  .ep_align > .buttonicon {
+    top:2px!important;
+  }
+
+  .ep_align_left > .buttonicon:before{
+    content:"\e800";
+  }
+  .ep_align_center > .buttonicon:before{
+    content:"\e80f";
+  }
+  .ep_align_justify > .buttonicon:before{
+    content:"\e811";
+  }
+  .ep_align_right > .buttonicon:before{
+    content:"\e810";
+  }
+	
+</style>
