@@ -1,4 +1,4 @@
-# ep_align
+# Align Fonts in Etherpad
 
 ## Function
 Adds options in the editbar to add justification to text IE Left, middle(center), right and justify.
