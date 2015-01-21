@@ -1,4 +1,5 @@
 describe("Alignment of Text", function(){
+
   //create a new pad before each test run
   beforeEach(function(cb){
     helper.newPad(cb);
@@ -28,10 +29,12 @@ describe("Alignment of Text", function(){
 
     //ace creates a new dom element when you press a button, so just get the first text element again
     var $newFirstTextElement = inner$("div").first().first();
-    var $alignedSpanStyles = $newFirstTextElement.children(0).attr("style");
+    var $alignedSpanStyles = $newFirstTextElement.children().first().attr("style");
+
+    var hasAlignment = ($alignedSpanStyles.indexOf("text-align: "+alignment) !== -1 || $alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)
 
     //expect it to be aligned correctly
-    expect(($alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)).to.be(true);
+    expect(hasAlignment).to.be(true);
 
     //make sure the text hasn't changed
     expect($newFirstTextElement.text()).to.eql($firstTextElement.text());
@@ -56,10 +59,12 @@ describe("Alignment of Text", function(){
 
     //ace creates a new dom element when you press a button, so just get the first text element again
     var $newFirstTextElement = inner$("div").first().first();
-    var $alignedSpanStyles = $newFirstTextElement.children(0).attr("style");
+    var $alignedSpanStyles = $newFirstTextElement.children().first().attr("style");
+
+    var hasAlignment = ($alignedSpanStyles.indexOf("text-align: "+alignment) !== -1 || $alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)
 
     //expect it to be aligned correctly
-    expect(($alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)).to.be(true);
+    expect(hasAlignment).to.be(true);
 
     //make sure the text hasn't changed
     expect($newFirstTextElement.text()).to.eql($firstTextElement.text());
@@ -84,10 +89,12 @@ describe("Alignment of Text", function(){
 
     //ace creates a new dom element when you press a button, so just get the first text element again
     var $newFirstTextElement = inner$("div").first().first();
-    var $alignedSpanStyles = $newFirstTextElement.children(0).attr("style");
+    var $alignedSpanStyles = $newFirstTextElement.children().first().attr("style");
+
+    var hasAlignment = ($alignedSpanStyles.indexOf("text-align: "+alignment) !== -1 || $alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)
 
     //expect it to be aligned correctly
-    expect(($alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)).to.be(true);
+    expect(hasAlignment).to.be(true);
 
     //make sure the text hasn't changed
     expect($newFirstTextElement.text()).to.eql($firstTextElement.text());
@@ -112,10 +119,12 @@ describe("Alignment of Text", function(){
 
     //ace creates a new dom element when you press a button, so just get the first text element again
     var $newFirstTextElement = inner$("div").first().first();
-    var $alignedSpanStyles = $newFirstTextElement.children(0).attr("style");
+    var $alignedSpanStyles = $newFirstTextElement.children().first().attr("style");
+
+    var hasAlignment = ($alignedSpanStyles.indexOf("text-align: "+alignment) !== -1 || $alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)
 
     //expect it to be aligned correctly
-    expect(($alignedSpanStyles.indexOf("text-align:"+alignment) !== -1)).to.be(true);
+    expect(hasAlignment).to.be(true);
 
     //make sure the text hasn't changed
     expect($newFirstTextElement.text()).to.eql($firstTextElement.text());
