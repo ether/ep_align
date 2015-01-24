@@ -14,7 +14,7 @@
         "eejsBlock_editbarMenuLeft": "ep_align/index",
         "collectContentPre": "ep_align/static/js/shared",
         "collectContentPost": "ep_align/static/js/shared",
-        "getLineHTMLForExport": "ep_align/index",
+	"asyncLineHTMLForExport": "ep_align/index",
         "eejsBlock_dd_format":"ep_align/index"
       }
     }
