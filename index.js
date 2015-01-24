@@ -10,21 +10,30 @@ exports.eejsBlock_dd_format = function (hook_name, args, cb) {
   return cb();
 }
 
+// Replaced with the async option
+/*
 exports.getLineHTMLForExport = function (hook, context) {
   var align = _analyzeLine(context.attribLine, context.apool);
   if (align) {
     return '<div style="width:100%;margin:0 auto;list-style-position:inside;text-align:' + align + '">' + context.lineContent + '</div>';
   }
 }
+*/
 
-function _analyzeLine(alineAttrs, apool) {
+exports.asyncLineHTMLForExport = function (hook, context, cb) {
+  cb(applyAlign);
+}
+
+function applyAlign(context){
   var align = null;
-  if (alineAttrs) {
-    var opIter = Changeset.opIterator(alineAttrs);
+  if (context.attribLine) {
+    var opIter = Changeset.opIterator(context.attribLine);
     if (opIter.hasNext()) {
       var op = opIter.next();
-      align = Changeset.opAttributeValue(op, 'align', apool);
+      align = Changeset.opAttributeValue(op, 'align', context.apool);
     }
   }
-  return align;
+  if (align) {
+    return '<div style="width:100%;margin:0 auto;list-style-position:inside;text-align:' + align + '">' + context.lineContent + '</div>';
+  }
 }
