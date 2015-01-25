@@ -7,7 +7,9 @@
     "email": "john@mclear.co.uk"
   },
   "contributors": [],
-  "dependencies": {},
+  "peerDependencies": {
+    "ep_etherpad-lite":">=1.5.1"
+  },
   "engines": {
     "node": "*"
   },

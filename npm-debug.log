@@ -1,0 +1,85 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/home/jose/etherpad-lite/node_modules/ep_align',
+5 verbose install   [ 'ep_etherpad-lite' ] ]
+6 info preinstall ep_align@0.0.12
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'ep_etherpad-lite@>=1.5.1', null ]
+9 verbose cache add name=undefined spec="ep_etherpad-lite@>=1.5.1" args=["ep_etherpad-lite@>=1.5.1",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'ep_etherpad-lite@%3E=1.5.1',
+10 verbose parsed url   path: 'ep_etherpad-lite@%3E=1.5.1',
+10 verbose parsed url   href: 'ep_etherpad-lite@%3E=1.5.1' }
+11 verbose cache add name="ep_etherpad-lite" spec=">=1.5.1" args=["ep_etherpad-lite",">=1.5.1"]
+12 verbose parsed url { protocol: null,
+12 verbose parsed url   slashes: null,
+12 verbose parsed url   auth: null,
+12 verbose parsed url   host: null,
+12 verbose parsed url   port: null,
+12 verbose parsed url   hostname: null,
+12 verbose parsed url   hash: null,
+12 verbose parsed url   search: null,
+12 verbose parsed url   query: null,
+12 verbose parsed url   pathname: '%3E=1.5.1',
+12 verbose parsed url   path: '%3E=1.5.1',
+12 verbose parsed url   href: '%3E=1.5.1' }
+13 verbose addNamed [ 'ep_etherpad-lite', '>=1.5.1' ]
+14 verbose addNamed [ null, '>=1.5.1' ]
+15 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
+16 verbose lock ep_etherpad-lite@>=1.5.1 /home/jose/.npm/f7612696-ep-etherpad-lite-1-5-1.lock
+17 silly addNameRange { name: 'ep_etherpad-lite', range: '>=1.5.1', hasData: false }
+18 verbose request where is /ep_etherpad-lite
+19 verbose request registry https://registry.npmjs.org/
+20 verbose request id 30efcda8081df697
+21 verbose url raw /ep_etherpad-lite
+22 verbose url resolving [ 'https://registry.npmjs.org/', './ep_etherpad-lite' ]
+23 verbose url resolved https://registry.npmjs.org/ep_etherpad-lite
+24 verbose request where is https://registry.npmjs.org/ep_etherpad-lite
+25 info trying registry request attempt 1 at 02:17:47
+26 http GET https://registry.npmjs.org/ep_etherpad-lite
+27 http 404 https://registry.npmjs.org/ep_etherpad-lite
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Sun, 25 Jan 2015 02:17:44 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     etag: '"CTARCSWY1JS2T9O7356ZXHFF4"',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '449',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-lhr6328-LHR',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1422152264.455169,VS0,VE86',
+28 silly registry.get     vary: 'Accept',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
+30 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
+31 error 404 Not Found
+31 error 404
+31 error 404 'ep_etherpad-lite' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404 It was specified as a dependency of 'ep_align'
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Linux 3.13.0-44-generic
+33 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+34 error cwd /home/jose/etherpad-lite/node_modules/ep_align
+35 error node -v v0.10.33
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]
