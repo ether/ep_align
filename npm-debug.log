@@ -1,85 +1,105 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
-4 verbose readDependencies using package.json deps
-5 verbose install where, deps [ '/home/jose/etherpad-lite/node_modules/ep_align',
-5 verbose install   [ 'ep_etherpad-lite' ] ]
-6 info preinstall ep_align@0.0.12
-7 verbose readDependencies using package.json deps
-8 verbose cache add [ 'ep_etherpad-lite@>=1.5.1', null ]
-9 verbose cache add name=undefined spec="ep_etherpad-lite@>=1.5.1" args=["ep_etherpad-lite@>=1.5.1",null]
-10 verbose parsed url { protocol: null,
-10 verbose parsed url   slashes: null,
-10 verbose parsed url   auth: null,
-10 verbose parsed url   host: null,
-10 verbose parsed url   port: null,
-10 verbose parsed url   hostname: null,
-10 verbose parsed url   hash: null,
-10 verbose parsed url   search: null,
-10 verbose parsed url   query: null,
-10 verbose parsed url   pathname: 'ep_etherpad-lite@%3E=1.5.1',
-10 verbose parsed url   path: 'ep_etherpad-lite@%3E=1.5.1',
-10 verbose parsed url   href: 'ep_etherpad-lite@%3E=1.5.1' }
-11 verbose cache add name="ep_etherpad-lite" spec=">=1.5.1" args=["ep_etherpad-lite",">=1.5.1"]
-12 verbose parsed url { protocol: null,
-12 verbose parsed url   slashes: null,
-12 verbose parsed url   auth: null,
-12 verbose parsed url   host: null,
-12 verbose parsed url   port: null,
-12 verbose parsed url   hostname: null,
-12 verbose parsed url   hash: null,
-12 verbose parsed url   search: null,
-12 verbose parsed url   query: null,
-12 verbose parsed url   pathname: '%3E=1.5.1',
-12 verbose parsed url   path: '%3E=1.5.1',
-12 verbose parsed url   href: '%3E=1.5.1' }
-13 verbose addNamed [ 'ep_etherpad-lite', '>=1.5.1' ]
-14 verbose addNamed [ null, '>=1.5.1' ]
-15 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
-16 verbose lock ep_etherpad-lite@>=1.5.1 /home/jose/.npm/f7612696-ep-etherpad-lite-1-5-1.lock
-17 silly addNameRange { name: 'ep_etherpad-lite', range: '>=1.5.1', hasData: false }
-18 verbose request where is /ep_etherpad-lite
-19 verbose request registry https://registry.npmjs.org/
-20 verbose request id 30efcda8081df697
-21 verbose url raw /ep_etherpad-lite
-22 verbose url resolving [ 'https://registry.npmjs.org/', './ep_etherpad-lite' ]
-23 verbose url resolved https://registry.npmjs.org/ep_etherpad-lite
-24 verbose request where is https://registry.npmjs.org/ep_etherpad-lite
-25 info trying registry request attempt 1 at 02:17:47
-26 http GET https://registry.npmjs.org/ep_etherpad-lite
-27 http 404 https://registry.npmjs.org/ep_etherpad-lite
-28 silly registry.get cb [ 404,
-28 silly registry.get   { date: 'Sun, 25 Jan 2015 02:17:44 GMT',
-28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-28 silly registry.get     etag: '"CTARCSWY1JS2T9O7356ZXHFF4"',
-28 silly registry.get     'content-type': 'application/json',
-28 silly registry.get     'cache-control': 'max-age=0',
-28 silly registry.get     'content-length': '449',
-28 silly registry.get     'accept-ranges': 'bytes',
-28 silly registry.get     via: '1.1 varnish',
-28 silly registry.get     age: '0',
-28 silly registry.get     'x-served-by': 'cache-lhr6328-LHR',
-28 silly registry.get     'x-cache': 'MISS',
-28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1422152264.455169,VS0,VE86',
-28 silly registry.get     vary: 'Accept',
-28 silly registry.get     'keep-alive': 'timeout=10, max=50',
-28 silly registry.get     connection: 'Keep-Alive' } ]
-29 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
-30 silly lockFile f7612696-ep-etherpad-lite-1-5-1 ep_etherpad-lite@>=1.5.1
-31 error 404 Not Found
-31 error 404
-31 error 404 'ep_etherpad-lite' is not in the npm registry.
-31 error 404 You should bug the author to publish it
-31 error 404 It was specified as a dependency of 'ep_align'
-31 error 404
-31 error 404 Note that you can also install from a
-31 error 404 tarball, folder, or http url, or git url.
-32 error System Linux 3.13.0-44-generic
-33 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install"
-34 error cwd /home/jose/etherpad-lite/node_modules/ep_align
-35 error node -v v0.10.33
-36 error npm -v 1.4.28
-37 error code E404
-38 verbose exit [ 1, true ]
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /home/jose/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/home/jose/.npm/ep_align/0.0.12/package.tgz', '.' ]
+11 verbose tarball /home/jose/.npm/ep_align/0.0.12/package.tgz
+12 verbose folder .
+13 info prepublish ep_align@0.0.12
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /home/jose/.npm/1f1177db-tar.lock
+16 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
+17 verbose lock tar:///home/jose/.npm/ep_align/0.0.12/package.tgz /home/jose/.npm/a370cbb6--npm-ep-align-0-0-12-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
+21 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
+22 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
+23 verbose lock /home/jose/.npm/ep_align/0.0.12/package /home/jose/.npm/b9aa4286-jose-npm-ep-align-0-0-12-package.lock
+24 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
+25 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { description: 'Add Left/Center/Right/Justify to lines of text in a pad',
+28 silly publish   name: 'ep_align',
+28 silly publish   version: '0.0.12',
+28 silly publish   author: { name: 'John McLear', email: 'john@mclear.co.uk' },
+28 silly publish   contributors: [],
+28 silly publish   peerDependencies: { 'ep_etherpad-lite': '>=1.5.1' },
+28 silly publish   engines: { node: '*' },
+28 silly publish   devDependencies: {},
+28 silly publish   repository: { type: 'git', url: 'git://github.com/johnmclear/ep_align.git' },
+28 silly publish   readme: '# ep_align\n\n## Function\nAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\n\n## Settings\nNone\n\n## Todo\nExport support\n\nWant further functionality?\nhttp://mclear.co.uk/experience\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   bugs: { url: 'https://github.com/johnmclear/ep_align/issues' },
+28 silly publish   _id: 'ep_align@0.0.12',
+28 silly publish   dist: { shasum: '9c71c10ccc09df9154763b8d1ebfcf12297f9cc3' },
+28 silly publish   _from: '.',
+28 silly publish   _resolved: 'https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz',
+28 silly publish   gitHead: '3a22058aa59a50b7ddd6b60a29859110cb35f38d',
+28 silly publish   homepage: 'https://github.com/johnmclear/ep_align',
+28 silly publish   scripts: {},
+28 silly publish   _shasum: 'f45e682aa65b862b37b53ff97a1f89a5408705f0' }
+29 verbose request where is /ep_align
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id e3aff8836617a992
+32 verbose url raw /ep_align
+33 verbose url resolving [ 'https://registry.npmjs.org/', './ep_align' ]
+34 verbose url resolved https://registry.npmjs.org/ep_align
+35 verbose request where is https://registry.npmjs.org/ep_align
+36 info trying registry request attempt 1 at 02:18:26
+37 http PUT https://registry.npmjs.org/ep_align
+38 http 403 https://registry.npmjs.org/ep_align
+39 verbose headers { date: 'Sun, 25 Jan 2015 02:18:25 GMT',
+39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+39 verbose headers   'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=60',
+39 verbose headers   'content-length': '2590',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   'x-served-by': 'cache-ams4138-AMS',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1422152304.412387,VS0,VE773',
+39 verbose headers   'keep-alive': 'timeout=10, max=50',
+39 verbose headers   connection: 'Keep-Alive' }
+40 error publish Failed PUT 403
+41 error Error: forbidden cannot modify pre-existing version: 0.0.12
+41 error old={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.12","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"dependencies":{},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.12","dist":{"shasum":"c309f207e6fd6253dd0e22895993df31832c04b9","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.12.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"650f1efd1fa4891578403ef1dabbb6ab411a672f","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"c309f207e6fd6253dd0e22895993df31832c04b9","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}
+41 error new={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.12","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"peerDependencies":{"ep_etherpad-lite":">=1.5.1"},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"readme":"# ep_align\u000a\u000a## Function\u000aAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\u000a\u000a## Settings\u000aNone\u000a\u000a## Todo\u000aExport support\u000a\u000aWant further functionality?\u000ahttp://mclear.co.uk/experience\u000a","readmeFilename":"README.md","bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.12","dist":{"shasum":"f45e682aa65b862b37b53ff97a1f89a5408705f0","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.12.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"3a22058aa59a50b7ddd6b60a29859110cb35f38d","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"f45e682aa65b862b37b53ff97a1f89a5408705f0","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}: ep_align
+41 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+41 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+41 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
+41 error     at Request.emit (events.js:98:17)
+41 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+41 error     at Request.emit (events.js:117:20)
+41 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+41 error     at IncomingMessage.emit (events.js:117:20)
+41 error     at _stream_readable.js:943:16
+41 error     at process._tickCallback (node.js:419:13)
+42 error If you need help, you may report this *entire* log,
+42 error including the npm and node versions, at:
+42 error     <http://github.com/npm/npm/issues>
+43 error System Linux 3.13.0-44-generic
+44 error command "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+45 error cwd /home/jose/etherpad-lite/node_modules/ep_align
+46 error node -v v0.10.33
+47 error npm -v 1.4.28
+48 verbose exit [ 1, true ]
