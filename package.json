@@ -1,15 +1,13 @@
 {
   "description": "Add Left/Center/Right/Justify to lines of text in a pad",
   "name": "ep_align",
-  "version": "0.0.13",
+  "version": "0.0.8",
   "author": {
     "name": "John McLear",
     "email": "john@mclear.co.uk"
   },
   "contributors": [],
-  "peerDependencies": {
-    "ep_etherpad-lite":">=1.5.1"
-  },
+  "dependencies": {},
   "engines": {
     "node": "*"
   },

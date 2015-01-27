@@ -8,7 +8,7 @@ var cssFiles = ['ep_align/static/css/editor.css'];
 // All our tags are block elements, so we just return them.
 var tags = ['left', 'center', 'right', 'justify'];
 var aceRegisterBlockElements = function(){
-  return tags;
+  return [tags];
 }
 
 // Bind the event handler to the toolbar buttons
@@ -56,9 +56,11 @@ var aceDomLinePreProcessLineAttributes = function(name, context){
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0){
     var tag = tags[tagIndex];
+    // we have to have the tags here for the registered block elements else
+    // when you type in aligned content it goes back to left alignment..
     var modifier = {
-      preHtml: '<div style="width:100%;margin:0 auto;list-style-position:inside;text-align:' + tag + '">',
-      postHtml: '</div>',
+      preHtml: '<'+tag+' style="width:100%;margin:0 auto;list-style-position:inside;display:block;text-align:' + tag + '">',
+      postHtml: '</'+tag+'>',
       processedMarker: true
     };
     return [modifier];
