@@ -19,71 +19,71 @@
 7 verbose parsed url   href: '.' }
 8 silly lockFile 3a52ce78- .
 9 verbose lock . /home/jose/.npm/3a52ce78-.lock
-10 verbose tar pack [ '/home/jose/.npm/ep_align/0.0.12/package.tgz', '.' ]
-11 verbose tarball /home/jose/.npm/ep_align/0.0.12/package.tgz
+10 verbose tar pack [ '/home/jose/.npm/ep_align/0.0.8/package.tgz', '.' ]
+11 verbose tarball /home/jose/.npm/ep_align/0.0.8/package.tgz
 12 verbose folder .
-13 info prepublish ep_align@0.0.12
+13 info prepublish ep_align@0.0.8
 14 silly lockFile 1f1177db-tar tar://.
 15 verbose lock tar://. /home/jose/.npm/1f1177db-tar.lock
-16 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
-17 verbose lock tar:///home/jose/.npm/ep_align/0.0.12/package.tgz /home/jose/.npm/a370cbb6--npm-ep-align-0-0-12-package-tgz.lock
+16 silly lockFile 22ed6e93-e-npm-ep-align-0-0-8-package-tgz tar:///home/jose/.npm/ep_align/0.0.8/package.tgz
+17 verbose lock tar:///home/jose/.npm/ep_align/0.0.8/package.tgz /home/jose/.npm/22ed6e93-e-npm-ep-align-0-0-8-package-tgz.lock
 18 silly lockFile 1f1177db-tar tar://.
 19 silly lockFile 1f1177db-tar tar://.
-20 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
-21 silly lockFile a370cbb6--npm-ep-align-0-0-12-package-tgz tar:///home/jose/.npm/ep_align/0.0.12/package.tgz
-22 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
-23 verbose lock /home/jose/.npm/ep_align/0.0.12/package /home/jose/.npm/b9aa4286-jose-npm-ep-align-0-0-12-package.lock
-24 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
-25 silly lockFile b9aa4286-jose-npm-ep-align-0-0-12-package /home/jose/.npm/ep_align/0.0.12/package
+20 silly lockFile 22ed6e93-e-npm-ep-align-0-0-8-package-tgz tar:///home/jose/.npm/ep_align/0.0.8/package.tgz
+21 silly lockFile 22ed6e93-e-npm-ep-align-0-0-8-package-tgz tar:///home/jose/.npm/ep_align/0.0.8/package.tgz
+22 silly lockFile 703c4e98--jose-npm-ep-align-0-0-8-package /home/jose/.npm/ep_align/0.0.8/package
+23 verbose lock /home/jose/.npm/ep_align/0.0.8/package /home/jose/.npm/703c4e98--jose-npm-ep-align-0-0-8-package.lock
+24 silly lockFile 703c4e98--jose-npm-ep-align-0-0-8-package /home/jose/.npm/ep_align/0.0.8/package
+25 silly lockFile 703c4e98--jose-npm-ep-align-0-0-8-package /home/jose/.npm/ep_align/0.0.8/package
 26 silly lockFile 3a52ce78- .
 27 silly lockFile 3a52ce78- .
 28 silly publish { description: 'Add Left/Center/Right/Justify to lines of text in a pad',
 28 silly publish   name: 'ep_align',
-28 silly publish   version: '0.0.12',
+28 silly publish   version: '0.0.8',
 28 silly publish   author: { name: 'John McLear', email: 'john@mclear.co.uk' },
 28 silly publish   contributors: [],
-28 silly publish   peerDependencies: { 'ep_etherpad-lite': '>=1.5.1' },
+28 silly publish   dependencies: {},
 28 silly publish   engines: { node: '*' },
 28 silly publish   devDependencies: {},
 28 silly publish   repository: { type: 'git', url: 'git://github.com/johnmclear/ep_align.git' },
 28 silly publish   readme: '# ep_align\n\n## Function\nAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\n\n## Settings\nNone\n\n## Todo\nExport support\n\nWant further functionality?\nhttp://mclear.co.uk/experience\n',
 28 silly publish   readmeFilename: 'README.md',
 28 silly publish   bugs: { url: 'https://github.com/johnmclear/ep_align/issues' },
-28 silly publish   _id: 'ep_align@0.0.12',
+28 silly publish   _id: 'ep_align@0.0.8',
 28 silly publish   dist: { shasum: '9c71c10ccc09df9154763b8d1ebfcf12297f9cc3' },
 28 silly publish   _from: '.',
 28 silly publish   _resolved: 'https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz',
-28 silly publish   gitHead: '3a22058aa59a50b7ddd6b60a29859110cb35f38d',
+28 silly publish   gitHead: '789ab6f492863211166b4feb51f0cb95284e052a',
 28 silly publish   homepage: 'https://github.com/johnmclear/ep_align',
 28 silly publish   scripts: {},
-28 silly publish   _shasum: 'f45e682aa65b862b37b53ff97a1f89a5408705f0' }
+28 silly publish   _shasum: '9819ab54022e3eefd02f2562809285933b1aebeb' }
 29 verbose request where is /ep_align
 30 verbose request registry https://registry.npmjs.org/
-31 verbose request id e3aff8836617a992
+31 verbose request id f3a0bbc9c9af4539
 32 verbose url raw /ep_align
 33 verbose url resolving [ 'https://registry.npmjs.org/', './ep_align' ]
 34 verbose url resolved https://registry.npmjs.org/ep_align
 35 verbose request where is https://registry.npmjs.org/ep_align
-36 info trying registry request attempt 1 at 02:18:26
+36 info trying registry request attempt 1 at 00:43:16
 37 http PUT https://registry.npmjs.org/ep_align
 38 http 403 https://registry.npmjs.org/ep_align
-39 verbose headers { date: 'Sun, 25 Jan 2015 02:18:25 GMT',
+39 verbose headers { date: 'Tue, 27 Jan 2015 00:43:17 GMT',
 39 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
 39 verbose headers   'content-type': 'application/json',
 39 verbose headers   'cache-control': 'max-age=60',
-39 verbose headers   'content-length': '2590',
+39 verbose headers   'content-length': '2547',
 39 verbose headers   'accept-ranges': 'bytes',
 39 verbose headers   via: '1.1 varnish',
-39 verbose headers   'x-served-by': 'cache-ams4138-AMS',
+39 verbose headers   'x-served-by': 'cache-fra1222-FRA',
 39 verbose headers   'x-cache': 'MISS',
 39 verbose headers   'x-cache-hits': '0',
-39 verbose headers   'x-timer': 'S1422152304.412387,VS0,VE773',
+39 verbose headers   'x-timer': 'S1422319396.946922,VS0,VE351',
 39 verbose headers   'keep-alive': 'timeout=10, max=50',
 39 verbose headers   connection: 'Keep-Alive' }
 40 error publish Failed PUT 403
-41 error Error: forbidden cannot modify pre-existing version: 0.0.12
-41 error old={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.12","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"dependencies":{},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.12","dist":{"shasum":"c309f207e6fd6253dd0e22895993df31832c04b9","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.12.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"650f1efd1fa4891578403ef1dabbb6ab411a672f","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"c309f207e6fd6253dd0e22895993df31832c04b9","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}
-41 error new={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.12","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"peerDependencies":{"ep_etherpad-lite":">=1.5.1"},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"readme":"# ep_align\u000a\u000a## Function\u000aAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\u000a\u000a## Settings\u000aNone\u000a\u000a## Todo\u000aExport support\u000a\u000aWant further functionality?\u000ahttp://mclear.co.uk/experience\u000a","readmeFilename":"README.md","bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.12","dist":{"shasum":"f45e682aa65b862b37b53ff97a1f89a5408705f0","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.12.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"3a22058aa59a50b7ddd6b60a29859110cb35f38d","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"f45e682aa65b862b37b53ff97a1f89a5408705f0","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}: ep_align
+41 error Error: forbidden cannot modify pre-existing version: 0.0.8
+41 error old={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.8","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"dependencies":{},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.8","dist":{"shasum":"7f53b4ae67b96939c426974a9d598173a44576e0","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.8.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"97935dd39bf72f5d7d5a23ffc0026a6c31cc9656","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"7f53b4ae67b96939c426974a9d598173a44576e0","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}
+41 error new={"description":"Add Left/Center/Right/Justify to lines of text in a pad","name":"ep_align","version":"0.0.8","author":{"name":"John McLear","email":"john@mclear.co.uk"},"contributors":[],"dependencies":{},"engines":{"node":"*"},"devDependencies":{},"repository":{"type":"git","url":"git://github.com/johnmclear/ep_align.git"},"readme":"# ep_align\u000a\u000a## Function\u000aAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\u000a\u000a## Settings\u000aNone\u000a\u000a## Todo\u000aExport support\u000a\u000aWant further functionality?\u000ahttp://mclear.co.uk/experience\u000a","readmeFilename":"README.md","bugs":{"url":"https://github.com/johnmclear/ep_align/issues"},"_id":"ep_align@0.0.8","dist":{"shasum":"9819ab54022e3eefd02f2562809285933b1aebeb","tarball":"http://registry.npmjs.org/ep_align/-/ep_align-0.0.8.tgz"},"_from":".","_resolved":"https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz","gitHead":"789ab6f492863211166b4feb51f0cb95284e052a","homepage":"https://github.com/johnmclear/ep_align","scripts":{},"_shasum":"9819ab54022e3eefd02f2562809285933b1aebeb","_npmVersion":"1.4.28","_npmUser":{"name":"johnyma22","email":"john@mclear.co.uk"},"maintainers":[{"name":"johnyma22","email":"john@mclear.co.uk"}]}: ep_align
 41 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
 41 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
 41 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
@@ -99,7 +99,7 @@
 42 error     <http://github.com/npm/npm/issues>
 43 error System Linux 3.13.0-44-generic
 44 error command "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
-45 error cwd /home/jose/etherpad-lite/node_modules/ep_align
+45 error cwd /home/jose/ep_align
 46 error node -v v0.10.33
 47 error npm -v 1.4.28
 48 verbose exit [ 1, true ]
