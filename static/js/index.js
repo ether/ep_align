@@ -8,7 +8,7 @@ var cssFiles = ['ep_align/static/css/editor.css'];
 // All our tags are block elements, so we just return them.
 var tags = ['left', 'center', 'right', 'justify'];
 var aceRegisterBlockElements = function(){
-  return [tags];
+  return tags;
 }
 
 // Bind the event handler to the toolbar buttons
