@@ -1,7 +1,7 @@
 {
-  "ep_align.align" : "Align",
-  "ep_align.left" : "Left",
-  "ep_align.middle" : "Middle",
-  "ep_align.right" : "Right",
-  "ep_align.justify" : "Justify"
+  "ep_align.align" : "Ausrichtung",
+  "ep_align.left" : "Linksbündig",
+  "ep_align.middle" : "Zentriert",
+  "ep_align.right" : "Rechtsbündig",
+  "ep_align.justify" : "Blocksatz"
 }
