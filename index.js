@@ -40,9 +40,13 @@ function getInlineStyle(header) {
 // line, apool,attribLine,text
 exports.getLineHTMLForExport = function (hook, context) {
   var header = _analyzeLine(context.attribLine, context.apool);
+  var lineContent = context.lineContent;
   if (header) {
     var inlineStyle = getInlineStyle(header);
-    return "<" + header + " style=\"" + inlineStyle + "\">" + context.text.substring(1) + "</" + header + ">";
+    if(lineContent[0] === '*') {
+      lineContent = lineContent.replace('*', '');
+    }
+    return "<" + header + " style=\"" + inlineStyle + "\">" + lineContent + "</" + header + ">";
   }
 }
 
