@@ -41,12 +41,10 @@ function getInlineStyle(header) {
 exports.getLineHTMLForExport = function (hook, context) {
   var header = _analyzeLine(context.attribLine, context.apool);
   var lineContent = context.lineContent;
-
   if (header) {
     var inlineStyle = getInlineStyle(header);
     context.lineContent = "<" + header + " style=\"" + inlineStyle + "\">" + lineContent + "</" + header + ">";
   }
-  
 }
 
 
