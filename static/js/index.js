@@ -11,22 +11,25 @@ var aceRegisterBlockElements = function(){
   return tags;
 }
 
-// Bind the event handler to the toolbar buttons
-var postAceInit = function(hook, context){
-  $('.ep_align_left').click(function(){
-    align(context, 0);
-  });
-  $('.ep_align_center').click(function(){
-    align(context, 1);
-  });
-  $('.ep_align_justify').click(function(){
-    align(context, 3);
-  });
-  $('.ep_align_right').click(function(){
-    align(context, 2);
-  });
-};
+function postToolbarInit (hook_name, context) {
+    var editbar = context.toolbar; // toolbar is actually editbar - http://etherpad.org/doc/v1.5.7/#index_editbar
 
+    editbar.registerCommand('alignLeft', function () {
+      align(context, 0);
+    });
+
+    editbar.registerCommand('alignCenter',  function () {     
+       align(context, 1);
+    });
+
+    editbar.registerCommand('alignJustify',  function () {
+      align(context, 3);
+    });
+
+    editbar.registerCommand('alignRight',  function () {
+      align(context, 2);
+    });
+};
 
 function align(context, alignment){
   context.ace.callWithAce(function(ace){
@@ -104,9 +107,9 @@ function aceEditorCSS(){
 };
 
 // Export all hooks
+exports.postToolbarInit = postToolbarInit;
 exports.aceRegisterBlockElements = aceRegisterBlockElements;
 exports.aceInitialized = aceInitialized;
-exports.postAceInit = postAceInit;
 exports.aceDomLinePreProcessLineAttributes = aceDomLinePreProcessLineAttributes;
 exports.aceAttribsToClasses = aceAttribsToClasses;
 exports.aceEditorCSS = aceEditorCSS;
