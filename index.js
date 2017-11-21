@@ -40,11 +40,13 @@ function getInlineStyle(header) {
 // line, apool,attribLine,text
 exports.getLineHTMLForExport = function (hook, context) {
   var header = _analyzeLine(context.attribLine, context.apool);
+  var lineContent = context.lineContent;
   if (header) {
     var inlineStyle = getInlineStyle(header);
-    return "<" + header + " style=\"" + inlineStyle + "\">" + context.text.substring(1) + "</" + header + ">";
+    context.lineContent = "<" + header + " style=\"" + inlineStyle + "\">" + lineContent + "</" + header + ">";
   }
 }
+
 
 function _analyzeLine(alineAttrs, apool) {
   var header = null;
@@ -57,3 +59,33 @@ function _analyzeLine(alineAttrs, apool) {
   }
   return header;
 }
+
+
+exports.padInitToolbar = function (hook_name, args) {
+    var toolbar = args.toolbar;
+
+    var alignLeftButton = toolbar.button({
+        command: 'alignLeft',
+        class: "buttonicon grouped-left ep_align ep_align_left"
+    });
+
+    var alignCenterButton = toolbar.button({
+        command: 'alignCenter',
+        class: "buttonicon grouped-middle ep_align ep_align_center"
+    });
+
+    var alignJustifyButton = toolbar.button({
+        command: 'alignJustify',
+        class: "buttonicon grouped-middle ep_align ep_align_justify"
+    });
+
+    var alignRightButton = toolbar.button({
+        command: 'alignRight',
+        class: "buttonicon grouped-right ep_align ep_align_right"
+    });
+
+    toolbar.registerButton('alignLeft', alignLeftButton);
+    toolbar.registerButton('alignCenter', alignCenterButton);
+    toolbar.registerButton('alignJustify', alignJustifyButton);
+    toolbar.registerButton('alignRight', alignRightButton);
+};
