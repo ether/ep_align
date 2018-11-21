@@ -1,7 +1,7 @@
 {
   "description": "Add Left/Center/Right/Justify to lines of text in a pad",
   "name": "ep_align",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "author": {
     "name": "John McLear",
     "email": "john@mclear.co.uk"
