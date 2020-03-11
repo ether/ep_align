@@ -5,7 +5,7 @@ var _ = require('ep_etherpad-lite/static/js/underscore');
 var cssFiles = ['ep_align/static/css/editor.css'];
 
 // All our tags are block elements, so we just return them.
-var tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code'];
+var tags = ['left', 'center', 'justify', 'right'];
 exports.aceRegisterBlockElements = function(){
   return tags;
 }
@@ -43,7 +43,7 @@ exports.aceEditEvent = function(hook, call, cb){
     var firstLine, lastLine;
     var activeAttributes = {};
     $("#align-selection").val(-2);
-  
+
     firstLine = rep.selStart[0];
     lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
     var totalNumberOfLines = 0;
@@ -58,7 +58,7 @@ exports.aceEditEvent = function(hook, call, cb){
         activeAttributes[attr].count++;
       }
     });
-    
+
     $.each(activeAttributes, function(k, attr){
       if(attr.count === totalNumberOfLines){
         // show as active class
@@ -71,25 +71,27 @@ exports.aceEditEvent = function(hook, call, cb){
 
 }
 
-// Our align attribute will result in a heaading:h1... :h6 class
+// Our align attribute will result in a heaading:left.... :left class
 exports.aceAttribsToClasses = function(hook, context){
   if(context.key == 'align'){
     return ['align:' + context.value ];
   }
 }
 
-// Here we convert the class align:h1 into a tag
+// Here we convert the class align:left into a tag
 exports.aceDomLineProcessLineAttributes = function(name, context){
   var cls = context.cls;
   var domline = context.domline;
   var alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
+
+top.console.log("alignType", alignType);
   var tagIndex;
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0){
     var tag = tags[tagIndex];
     var modifier = {
-      preHtml: '<' + tag + '>',
-      postHtml: '</' + tag + '>',
+      preHtml: '<'+tag+' style="width:100%;margin:0 auto;list-style-position:inside;display:block;text-align:' + tag + '">',
+      postHtml: '</'+tag+'>',
       processedMarker: true
     };
     return [modifier];
