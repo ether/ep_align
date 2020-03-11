@@ -2,56 +2,81 @@ var _, $, jQuery;
 
 var $ = require('ep_etherpad-lite/static/js/rjquery').$;
 var _ = require('ep_etherpad-lite/static/js/underscore');
-var alignClass = 'align';
-var cssFiles = ['ep_align/static/css/editor.css'];
 
 // All our tags are block elements, so we just return them.
-var tags = ['left', 'center', 'right', 'justify'];
-var aceRegisterBlockElements = function(){
+var tags = ['left', 'center', 'justify', 'right'];
+exports.aceRegisterBlockElements = function(){
   return tags;
 }
 
-function postToolbarInit (hook_name, context) {
-    var editbar = context.toolbar; // toolbar is actually editbar - http://etherpad.org/doc/v1.5.7/#index_editbar
-
-    editbar.registerCommand('alignLeft', function () {
-      align(context, 0);
-    });
-
-    editbar.registerCommand('alignCenter',  function () {     
-       align(context, 1);
-    });
-
-    editbar.registerCommand('alignJustify',  function () {
-      align(context, 3);
-    });
-
-    editbar.registerCommand('alignRight',  function () {
-      align(context, 2);
-    });
+// Bind the event handler to the toolbar buttons
+exports.postAceInit = function(hook, context){
+  $('body').on('click', '.ep_align', function(){
+    var value = $(this).data("align");
+    var intValue = parseInt(value,10);
+    if(!_.isNaN(intValue)){
+      context.ace.callWithAce(function(ace){
+        ace.ace_doInsertAlign(intValue);
+      },'insertalign' , true);
+    }
+  })
 };
 
-function align(context, alignment){
-  context.ace.callWithAce(function(ace){
-    ace.ace_doInsertalign(alignment);
-    ace.ace_focus();
-  },'insertalign' , true);
+// On caret position change show the current align
+exports.aceEditEvent = function(hook, call, cb){
+
+  // If it's not a click or a key event and the text hasn't changed then do nothing
+  var cs = call.callstack;
+  if(!(cs.type == "handleClick") && !(cs.type == "handleKeyEvent") && !(cs.docTextChanged)){
+    return false;
+  }
+  // If it's an initial setup event then do nothing..
+  if(cs.type == "setBaseText" || cs.type == "setup") return false;
+
+  // It looks like we should check to see if this section has this attribute
+  setTimeout(function(){ // avoid race condition..
+    var attributeManager = call.documentAttributeManager;
+    var rep = call.rep;
+    var firstLine, lastLine;
+    var activeAttributes = {};
+    // $("#align-selection").val(-2); // TODO commented this out
+
+    firstLine = rep.selStart[0];
+    lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
+    var totalNumberOfLines = 0;
+
+    _(_.range(firstLine, lastLine + 1)).each(function(line){
+      totalNumberOfLines++;
+      var attr = attributeManager.getAttributeOnLine(line, "align");
+      if(!activeAttributes[attr]){
+        activeAttributes[attr] = {};
+        activeAttributes[attr].count = 1;
+      }else{
+        activeAttributes[attr].count++;
+      }
+    });
+
+    $.each(activeAttributes, function(k, attr){
+      if(attr.count === totalNumberOfLines){
+        // show as active class
+        var ind = tags.indexOf(k);
+        // $("#align-selection").val(ind); // TODO commnented this out
+      }
+    });
+
+  },250);
+
 }
 
-
-// Our align attribute will result in an align:left...right class
-function aceAttribsToClasses(hook, context){
-  if(context.key.indexOf("align:") !== -1){
-    var align = /(?:^| )align:([A-Za-z0-9]*)/.exec(context.key);
-    return ['align:' + align[1] ];
-  }
+// Our align attribute will result in a heaading:left.... :left class
+exports.aceAttribsToClasses = function(hook, context){
   if(context.key == 'align'){
     return ['align:' + context.value ];
   }
 }
 
-// Here we convert the class align:h1 into a tag
-var aceDomLinePreProcessLineAttributes = function(name, context){
+// Here we convert the class align:left into a tag
+exports.aceDomLineProcessLineAttributes = function(name, context){
   var cls = context.cls;
   var domline = context.domline;
   var alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
@@ -59,8 +84,6 @@ var aceDomLinePreProcessLineAttributes = function(name, context){
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0){
     var tag = tags[tagIndex];
-    // we have to have the tags here for the registered block elements else
-    // when you type in aligned content it goes back to left alignment..
     var modifier = {
       preHtml: '<'+tag+' style="width:100%;margin:0 auto;list-style-position:inside;display:block;text-align:' + tag + '">',
       postHtml: '</'+tag+'>',
@@ -72,18 +95,18 @@ var aceDomLinePreProcessLineAttributes = function(name, context){
 };
 
 // Find out which lines are selected and assign them the align attribute.
-// Passing a level >= 0 will set a align on the selected lines, level < 0 
+// Passing a level >= 0 will set a alignment on the selected lines, level < 0 
 // will remove it
-function doInsertalign(level){
+function doInsertAlign(level){
   var rep = this.rep,
     documentAttributeManager = this.documentAttributeManager;
   if (!(rep.selStart && rep.selEnd) || (level >= 0 && tags[level] === undefined))
   {
     return;
   }
-  
+
   var firstLine, lastLine;
-  
+
   firstLine = rep.selStart[0];
   lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
   _(_.range(firstLine, lastLine + 1)).each(function(i){
@@ -96,20 +119,10 @@ function doInsertalign(level){
 }
 
 
-// Once ace is initialized, we set ace_doInsertalign and bind it to the context
-function aceInitialized(hook, context){
+// Once ace is initialized, we set ace_doInsertAlign and bind it to the context
+exports.aceInitialized = function(hook, context){
   var editorInfo = context.editorInfo;
-  editorInfo.ace_doInsertalign = _(doInsertalign).bind(context);
+  editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
 }
 
-function aceEditorCSS(){
-  return cssFiles;
-};
 
-// Export all hooks
-exports.postToolbarInit = postToolbarInit;
-exports.aceRegisterBlockElements = aceRegisterBlockElements;
-exports.aceInitialized = aceInitialized;
-exports.aceDomLinePreProcessLineAttributes = aceDomLinePreProcessLineAttributes;
-exports.aceAttribsToClasses = aceAttribsToClasses;
-exports.aceEditorCSS = aceEditorCSS;

@@ -1,13 +1,19 @@
-# ep_align
+# What is this?
+An Etherpad Plugin to apply Text Alignment in a pad.  Currently supports:
 
-## Function
-Adds options in the editbar to add justification to text IE Left, middle(center), right and justify.
+* Left
+* Center
+* Justify
+* Right
 
-## Settings
-None
+# Export support
+Experimental.  As attributes are line by line on Etherpad some weirdness may be experienced.
 
-## Todo
-Export support
+# History
+I decided to copy/pasta the ep_headings2 plugin over ep_align to fix a load of issues.
 
-Want further functionality?
-http://mclear.co.uk/experience
+# License
+Apache 2
+
+# Development
+Development done for free to help support continued learning due to distruption by the corona virus.  26LLC supported.
