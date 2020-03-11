@@ -1,30 +1,52 @@
 {
-  "description": "Add Left/Center/Right/Justify to lines of text in a pad",
-  "name": "ep_align",
-  "version": "0.0.24",
+  "_from": "ep_align",
+  "_id": "ep_align@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-hQwIerjWtcY3qWfqCsm+MIk/eo/hfpOl7mkGS+YZFJvljv4xuDk8QK8gnYY7RLtiKGo8jN8fKlht2w6DCLosjg==",
+  "_location": "/ep_align",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ep_align",
+    "name": "ep_align",
+    "escapedName": "ep_align",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ep_align/-/ep_align-0.0.24.tgz",
+  "_shasum": "20c4e8062cb212759b6ea2dcf7da46cd6d41f7a0",
+  "_spec": "ep_align",
+  "_where": "/home/jose/etherpad-lite",
   "author": {
     "name": "John McLear",
     "email": "john@mclear.co.uk"
   },
+  "bugs": {
+    "url": "https://github.com/johnmclear/ep_align/issues"
+  },
+  "bundleDependencies": false,
   "contributors": [],
   "dependencies": {},
+  "deprecated": false,
+  "description": "Add Left/Center/Right/Justify to lines of text in a pad",
+  "devDependencies": {},
+  "dist": {
+    "shasum": "9c71c10ccc09df9154763b8d1ebfcf12297f9cc3"
+  },
   "engines": {
     "node": "*"
   },
-  "devDependencies": {},
+  "homepage": "https://github.com/johnmclear/ep_align#readme",
+  "name": "ep_align",
   "repository": {
     "type": "git",
     "url": "git://github.com/johnmclear/ep_align.git"
   },
-  "readme": "# ep_align\n\n## Function\nAdds options in the editbar to add justification to text IE Left, middle(center), right and justify.\n\n## Settings\nNone\n\n## Todo\nExport support\n\nWant further functionality?\nhttp://mclear.co.uk/experience\n",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/johnmclear/ep_align/issues"
-  },
-  "_id": "ep_align@0.0.3",
-  "dist": {
-    "shasum": "9c71c10ccc09df9154763b8d1ebfcf12297f9cc3"
-  },
-  "_from": "ep_align@",
-  "_resolved": "https://registry.npmjs.org/ep_align/-/ep_align-0.0.3.tgz"
+  "version": "0.1.24"
 }
