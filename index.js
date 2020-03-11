@@ -23,21 +23,22 @@ exports.stylesForExport = function(hook, padId, cb){
 
 // line, apool,attribLine,text
 exports.getLineHTMLForExport = function (hook, context) {
-  var header = _analyzeLine(context.attribLine, context.apool);
-  if (header) {
-    context.lineContent = "<" + header + ">" + Security.escapeHTML(context.text.substring(1)) + "</" + header + ">";
-    return "<" + header + ">" + Security.escapeHTML(context.text.substring(1)) + "</" + header + ">";
+  var alignment = _analyzeLine(context.attribLine, context.apool);
+  if (alignment) {
+    // TODO, don't do this.  Wrap in span and apply justification to that?
+    context.lineContent = "<" + alignment + ">" + Security.escapeHTML(context.text.substring(1)) + "</" + alignment + ">";
+    return "<" + alignment + ">" + Security.escapeHTML(context.text.substring(1)) + "</" + alignment + ">";
   }
 }
 
 function _analyzeLine(alineAttrs, apool) {
-  var header = null;
+  var alignment = null;
   if (alineAttrs) {
     var opIter = Changeset.opIterator(alineAttrs);
     if (opIter.hasNext()) {
       var op = opIter.next();
-      header = Changeset.opAttributeValue(op, 'align', apool);
+      alignment = Changeset.opAttributeValue(op, 'align', apool);
     }
   }
-  return header;
+  return alignment;
 }
