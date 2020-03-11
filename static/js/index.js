@@ -11,15 +11,13 @@ exports.aceRegisterBlockElements = function(){
 
 // Bind the event handler to the toolbar buttons
 exports.postAceInit = function(hook, context){
-  var hs = $('#align-selection');
-  hs.on('change', function(){
-    var value = $(this).val();
+  $('body').on('click', '.ep_align', function(){
+    var value = $(this).data("align");
     var intValue = parseInt(value,10);
     if(!_.isNaN(intValue)){
       context.ace.callWithAce(function(ace){
         ace.ace_doInsertAlign(intValue);
       },'insertalign' , true);
-      hs.val("dummy");
     }
   })
 };
@@ -41,7 +39,7 @@ exports.aceEditEvent = function(hook, call, cb){
     var rep = call.rep;
     var firstLine, lastLine;
     var activeAttributes = {};
-    $("#align-selection").val(-2);
+    // $("#align-selection").val(-2); // TODO commented this out
 
     firstLine = rep.selStart[0];
     lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
@@ -62,7 +60,7 @@ exports.aceEditEvent = function(hook, call, cb){
       if(attr.count === totalNumberOfLines){
         // show as active class
         var ind = tags.indexOf(k);
-        $("#align-selection").val(ind);
+        // $("#align-selection").val(ind); // TODO commnented this out
       }
     });
 
