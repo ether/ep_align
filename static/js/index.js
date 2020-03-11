@@ -83,8 +83,6 @@ exports.aceDomLineProcessLineAttributes = function(name, context){
   var cls = context.cls;
   var domline = context.domline;
   var alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
-
-top.console.log("alignType", alignType);
   var tagIndex;
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0){
