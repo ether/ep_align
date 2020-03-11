@@ -2,7 +2,6 @@ var _, $, jQuery;
 
 var $ = require('ep_etherpad-lite/static/js/rjquery').$;
 var _ = require('ep_etherpad-lite/static/js/underscore');
-var cssFiles = ['ep_align/static/css/editor.css'];
 
 // All our tags are block elements, so we just return them.
 var tags = ['left', 'center', 'justify', 'right'];
@@ -128,7 +127,4 @@ exports.aceInitialized = function(hook, context){
   editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
 }
 
-exports.aceEditorCSS = function(){
-  return cssFiles;
-};
 

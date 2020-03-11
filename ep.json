@@ -3,7 +3,6 @@
     {
       "name": "main",
       "client_hooks": {
-        "aceEditorCSS": "ep_align/static/js/index",
         "aceEditEvent": "ep_align/static/js/index",
         "aceDomLineProcessLineAttributes": "ep_align/static/js/index",
         "postAceInit": "ep_align/static/js/index",
