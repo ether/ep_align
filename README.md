@@ -10,7 +10,7 @@ An Etherpad Plugin to apply Text Alignment in a pad.  Currently supports:
 Experimental.  As attributes are line by line on Etherpad some weirdness may be experienced.
 
 # History
-I decided to copy/pasta the ep_headings2 plugin over ep_align to fix a load of issues.
+I decided to copy/paste the ep_headings2 plugin over ep_align to fix a load of issues.
 
 # License
 Apache 2
