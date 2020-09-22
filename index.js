@@ -3,6 +3,7 @@ var Changeset = require("ep_etherpad-lite/static/js/Changeset");
 var Security = require('ep_etherpad-lite/static/js/security');
 
 exports.eejsBlock_editbarMenuLeft = function (hook_name, args, cb) {
+  if (args.renderContext.isReadOnly) return cb();
   args.content = args.content + eejs.require("ep_align/templates/editbarButtons.ejs");
   return cb();
 }
