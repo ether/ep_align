@@ -9,7 +9,7 @@ exports.eejsBlock_editbarMenuLeft = function (hook_name, args, cb) {
 }
 
 // line, apool,attribLine,text
-exports.getLineHTMLForExport = function (hook, context) {
+exports.getLineHTMLForExport = async (hookName, context) => {
   var alignment = _analyzeLine(context.attribLine, context.apool);
   if (alignment) {
     context.lineContent = "<p style='text-align:" + alignment + "'>" + Security.escapeHTML(context.text.substring(1)) + "</p>";
