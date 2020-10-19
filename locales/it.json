@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"ep_align.left": "Sinistra",
+	"ep_align.right": "Destra",
+	"ep_align.justify": "Giustificato"
+}
