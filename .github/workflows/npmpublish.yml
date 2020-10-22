@@ -4,8 +4,11 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+#trigger on every commit to the main branch
+  push:
+    branches:
+      - main
+      - master 
 
 jobs:
   build:
@@ -28,6 +31,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: npm version patch
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
