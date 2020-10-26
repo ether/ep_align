@@ -1,10 +1,12 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Gomoko"
+		]
 	},
 	"ep_align.align": "Alignement",
 	"ep_align.left": "Gauche",
-	"ep_align.middle": "Milieu",
+	"ep_align.center": "Centre",
 	"ep_align.right": "Droit",
 	"ep_align.justify": "Justifié"
 }

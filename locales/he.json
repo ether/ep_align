@@ -6,7 +6,7 @@
 	},
 	"ep_align.align": "יישור",
 	"ep_align.left": "שמאל",
-	"ep_align.middle": "אמצע",
+	"ep_align.center": "מרכז",
 	"ep_align.right": "ימין",
 	"ep_align.justify": "פיזור שוויוני"
 }

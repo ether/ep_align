@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"ep_align.align": "정렬",
+	"ep_align.left": "왼쪽",
+	"ep_align.center": "가운데",
+	"ep_align.right": "오른쪽",
+	"ep_align.justify": "균등"
+}

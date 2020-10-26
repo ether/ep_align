@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"ep_align.align": "Alinhar",
+	"ep_align.left": "Esquerda",
+	"ep_align.center": "Centro",
+	"ep_align.right": "Direita",
+	"ep_align.justify": "Justificar"
+}

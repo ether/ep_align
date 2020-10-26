@@ -6,7 +6,7 @@
 	},
 	"ep_align.align": "Hizalama",
 	"ep_align.left": "Sol",
-	"ep_align.middle": "Orta",
+	"ep_align.center": "Merkez",
 	"ep_align.right": "Sağ",
 	"ep_align.justify": "Hak"
 }

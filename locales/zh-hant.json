@@ -6,7 +6,7 @@
 	},
 	"ep_align.align": "校準",
 	"ep_align.left": "左",
-	"ep_align.middle": "中間",
+	"ep_align.center": "中",
 	"ep_align.right": "右",
 	"ep_align.justify": "左右對齊"
 }

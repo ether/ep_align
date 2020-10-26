@@ -1,10 +1,12 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Rail"
+		]
 	},
 	"ep_align.align": "Wyrównanie",
 	"ep_align.left": "Do lewej",
-	"ep_align.middle": "Do środka",
+	"ep_align.center": "Wyśrodkowanie",
 	"ep_align.right": "Do prawej",
 	"ep_align.justify": "Justowanie"
 }

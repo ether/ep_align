@@ -1,10 +1,12 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"WikiPhoenix"
+		]
 	},
 	"ep_align.align": "Textjustering",
 	"ep_align.left": "Vänsterjustera",
-	"ep_align.middle": "Centrera",
+	"ep_align.center": "Centrera",
 	"ep_align.right": "Högerjustera",
 	"ep_align.justify": "Marginaljustera"
 }

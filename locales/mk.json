@@ -6,7 +6,7 @@
 	},
 	"ep_align.align": "Порамни",
 	"ep_align.left": "Лево",
-	"ep_align.middle": "По средина",
+	"ep_align.center": "По средина",
 	"ep_align.right": "Десно",
 	"ep_align.justify": "Порамни пасус"
 }
