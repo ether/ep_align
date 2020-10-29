@@ -20,7 +20,7 @@ install:
 
 before_script:
   - "tests/frontend/travis/sauce_tunnel.sh"
-  
+
 script:
   - "tests/frontend/travis/runner.sh"
 
@@ -31,13 +31,13 @@ env:
 
 jobs:
   include:
-    - name: "Lint test package-lock"
-      install:
-       - npm install lockfile-lint
-      script:
-       - npx lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm
-    - name: "Run the Backend tests"
-      install:
+     - name: "Lint test package-lock"
+       install:
+        - "npm install lockfile-lint"
+       script:
+        - npx lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm
+     - name: "Run the Backend tests"
+       install:
         - "npm install"
         - "mkdir ep_align"
         - "mv !(ep_align) ep_align"
