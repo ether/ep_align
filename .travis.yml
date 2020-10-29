@@ -21,8 +21,7 @@ install:
 
 before_script:
   - "tests/frontend/travis/sauce_tunnel.sh"
-  - npx lockfile-lint --path src/package-lock.json --validate-https --allowed-hosts npm
-
+  
 script:
   - "tests/frontend/travis/runner.sh"
 
