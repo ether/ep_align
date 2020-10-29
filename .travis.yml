@@ -36,6 +36,7 @@ jobs:
         - "npm install lockfile-lint"
        script:
         - npx lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm
+        - "rm -Rf node_modules/"
      - name: "Run the Backend tests"
        install:
         - "npm install"
