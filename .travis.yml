@@ -11,9 +11,6 @@ before_install:
   - sudo apt-get -y install libreoffice
   - sudo apt-get -y install libreoffice-pdfimport
 
-before_script:
-  - npx lockfile-lint --path src/package-lock.json --validate-https --allowed-hosts npm
-
 services:
   - docker
 
@@ -24,6 +21,7 @@ install:
 
 before_script:
   - "tests/frontend/travis/sauce_tunnel.sh"
+  - npx lockfile-lint --path src/package-lock.json --validate-https --allowed-hosts npm
 
 script:
   - "tests/frontend/travis/runner.sh"
@@ -68,5 +66,5 @@ notifications:
     channels:
       - "irc.freenode.org#etherpad-lite-dev"
 
-##ETHERPAD_TRAVIS_V=3
+##ETHERPAD_TRAVIS_V=4
 ## Travis configuration automatically created using bin/plugins/updateAllPluginsScript.sh
