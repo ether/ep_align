@@ -49,10 +49,10 @@ jobs:
         - "bin/installDeps.sh"
         - "export GIT_HASH=$(git rev-parse --verify --short HEAD)"
         - "cd src && npm install && cd -"
-      script:
+       script:
         - "tests/frontend/travis/runnerBackend.sh"
-    - name: "Test the Frontend"
-      install:
+     - name: "Test the Frontend"
+       install:
         - "npm install"
         - "mkdir ep_align"
         - "mv !(ep_align) ep_align"
@@ -62,7 +62,7 @@ jobs:
         - "mv ../ep_align node_modules"
         - "bin/installDeps.sh"
         - "export GIT_HASH=$(git rev-parse --verify --short HEAD)"
-      script:
+       script:
         - "tests/frontend/travis/runner.sh"
 
 notifications:
