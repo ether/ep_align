@@ -11,8 +11,8 @@ services:
 install:
   - "export GIT_HASH=$(git rev-parse --verify --short HEAD)"
 
-script:
-  - "tests/frontend/travis/runner.sh"
+#script:
+#  - "tests/frontend/travis/runner.sh"
 
 env:
   global:
@@ -26,7 +26,6 @@ jobs:
         - "npm install lockfile-lint"
        script:
         - npx lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm
-        - "rm -Rf node_modules/"
      - name: "Run the Backend tests"
        before_script:
         - "tests/frontend/travis/sauce_tunnel.sh"
@@ -49,6 +48,8 @@ jobs:
        script:
         - "tests/frontend/travis/runnerBackend.sh"
      - name: "Test the Frontend"
+       before_script:
+        - "tests/frontend/travis/sauce_tunnel.sh"
        install:
         - "npm install"
         - "mkdir ep_align"
