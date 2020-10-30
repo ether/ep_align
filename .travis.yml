@@ -47,27 +47,26 @@ jobs:
         - "cd src && npm install && cd -"
        script:
         - "tests/frontend/travis/runnerBackend.sh"
-     - if: fork = false
-       - name: "Test the Frontend"
-         before_script:
-          - "tests/frontend/travis/sauce_tunnel.sh"
-         install:
-          - "npm install"
-          - "mkdir ep_align"
-          - "mv !(ep_align) ep_align"
-          - "git clone https://github.com/ether/etherpad-lite.git etherpad"
-          - "cd etherpad"
-          - "mkdir node_modules"
-          - "mv ../ep_align node_modules"
-          - "bin/installDeps.sh"
-          - "export GIT_HASH=$(git rev-parse --verify --short HEAD)"
-         script:
-          - "tests/frontend/travis/runner.sh"
+     - name: "Test the Frontend"
+       before_script:
+        - "tests/frontend/travis/sauce_tunnel.sh"
+       install:
+        - "npm install"
+        - "mkdir ep_align"
+        - "mv !(ep_align) ep_align"
+        - "git clone https://github.com/ether/etherpad-lite.git etherpad"
+        - "cd etherpad"
+        - "mkdir node_modules"
+        - "mv ../ep_align node_modules"
+        - "bin/installDeps.sh"
+        - "export GIT_HASH=$(git rev-parse --verify --short HEAD)"
+       script:
+        - "tests/frontend/travis/runner.sh"
 
 notifications:
   irc:
     channels:
       - "irc.freenode.org#etherpad-lite-dev"
 
-##ETHERPAD_TRAVIS_V=5
+##ETHERPAD_TRAVIS_V=7
 ## Travis configuration automatically created using bin/plugins/updateAllPluginsScript.sh
