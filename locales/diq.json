@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"1917 Ekim Devrimi"
+		]
+	},
+	"ep_align.align": "Ratnayış",
+	"ep_align.left": "Çep",
+	"ep_align.center": "Merkez",
+	"ep_align.right": "Raşt",
+	"ep_align.justify": "Heq"
+}
