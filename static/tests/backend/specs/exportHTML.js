@@ -1,153 +1,145 @@
-var supertest = require('ep_etherpad-lite/node_modules/supertest'),
-           fs = require('fs'),
-         path = require('path'),
-      request = require('ep_etherpad-lite/node_modules/request'),
-        utils = require('../utils.js');
-       apiKey = utils.apiKey,
-    codeToBe0 = utils.codeToBe0,
-          api = utils.api,
-   apiVersion = utils.apiVersion,
- randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
+const supertest = require('ep_etherpad-lite/node_modules/supertest');
+const fs = require('fs');
+const path = require('path');
+const request = require('ep_etherpad-lite/node_modules/request');
+const utils = require('../utils.js');
+apiKey = utils.apiKey,
+codeToBe0 = utils.codeToBe0,
+api = utils.api,
+apiVersion = utils.apiVersion,
+randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
-describe('export alignment to HTML', function(){
-  var padID;
-  var html;
+describe('export alignment to HTML', function () {
+  let padID;
+  let html;
 
-  //create a new pad before each test run
-  beforeEach(function(done){
+  // create a new pad before each test run
+  beforeEach(function (done) {
     padID = randomString(5);
 
-    createPad(padID, function() {
+    createPad(padID, () => {
       setHTML(padID, html(), done);
     });
   });
 
-  context('when pad text is center aligned', function() {
-    before(function() {
-      html = function() {
-        return buildHTML("<center>Hello world</center>");
-      }
+  context('when pad text is center aligned', function () {
+    before(function () {
+      html = function () {
+        return buildHTML('<center>Hello world</center>');
+      };
     });
 
-    it('returns ok', function(done) {
+    it('returns ok', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect('Content-Type', /json/)
-      .expect(200, done);
+          .expect('Content-Type', /json/)
+          .expect(200, done);
     });
 
-    it('returns HTML with Subscript HTML tags', function(done) {
+    it('returns HTML with Subscript HTML tags', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect(function(res){
-        let html = res.body.data.html;
-        if(html.indexOf("<p style='text-align:center'>Hello world</p><br><br></body></html>") === -1) throw new Error("No center tag detected");
-      })
-      .end(done);
+          .expect((res) => {
+            const html = res.body.data.html;
+            if (html.indexOf("<p style='text-align:center'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+          })
+          .end(done);
     });
-
   });
 
-  context('when pad text is justified aligned', function() {
-    before(function() {
-      html = function() {
-        return buildHTML("<justify>Hello world</justify>");
-      }
+  context('when pad text is justified aligned', function () {
+    before(function () {
+      html = function () {
+        return buildHTML('<justify>Hello world</justify>');
+      };
     });
 
-    it('returns ok', function(done) {
+    it('returns ok', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect('Content-Type', /json/)
-      .expect(200, done);
+          .expect('Content-Type', /json/)
+          .expect(200, done);
     });
 
-    it('returns HTML with Subscript HTML tags', function(done) {
+    it('returns HTML with Subscript HTML tags', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect(function(res){
-        let html = res.body.data.html;
-        if(html.indexOf("<p style='text-align:justify'>Hello world</p><br><br></body></html>") === -1) throw new Error("No center tag detected");
-      })
-      .end(done);
+          .expect((res) => {
+            const html = res.body.data.html;
+            if (html.indexOf("<p style='text-align:justify'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+          })
+          .end(done);
     });
-
   });
 
-  context('when pad text is right aligned', function() {
-    before(function() {
-      html = function() {
-        return buildHTML("<right>Hello world</right>");
-      }
+  context('when pad text is right aligned', function () {
+    before(function () {
+      html = function () {
+        return buildHTML('<right>Hello world</right>');
+      };
     });
 
-    it('returns ok', function(done) {
+    it('returns ok', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect('Content-Type', /json/)
-      .expect(200, done);
+          .expect('Content-Type', /json/)
+          .expect(200, done);
     });
 
-    it('returns HTML with Subscript HTML tags', function(done) {
+    it('returns HTML with Subscript HTML tags', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect(function(res){
-        let html = res.body.data.html;
-        if(html.indexOf("<p style='text-align:right'>Hello world</p><br><br></body></html>") === -1) throw new Error("No center tag detected");
-      })
-      .end(done);
+          .expect((res) => {
+            const html = res.body.data.html;
+            if (html.indexOf("<p style='text-align:right'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+          })
+          .end(done);
     });
-
   });
 
-  context('when pad text is left aligned', function() {
-    before(function() {
-      html = function() {
-        return buildHTML("<left>Hello world</left>");
-      }
+  context('when pad text is left aligned', function () {
+    before(function () {
+      html = function () {
+        return buildHTML('<left>Hello world</left>');
+      };
     });
 
-    it('returns ok', function(done) {
+    it('returns ok', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect('Content-Type', /json/)
-      .expect(200, done);
+          .expect('Content-Type', /json/)
+          .expect(200, done);
     });
 
-    it('returns HTML with Subscript HTML tags', function(done) {
+    it('returns HTML with Subscript HTML tags', function (done) {
       api.get(getHTMLEndPointFor(padID))
-      .expect(function(res){
-        let html = res.body.data.html;
-        if(html.indexOf("<p style='text-align:left'>Hello world</p><br><br></body></html>") === -1) throw new Error("No center tag detected");
-      })
-      .end(done);
+          .expect((res) => {
+            const html = res.body.data.html;
+            if (html.indexOf("<p style='text-align:left'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+          })
+          .end(done);
     });
-
   });
-
-})
-
-
+});
 
 
 // Creates a pad and returns the pad id. Calls the callback when finished.
-var createPad = function(padID, callback) {
-  api.get('/api/'+apiVersion+'/createPad?apikey='+apiKey+"&padID="+padID)
-  .end(function(err, res){
-    if(err || (res.body.code !== 0)) callback(new Error("Unable to create new Pad"));
+var createPad = function (padID, callback) {
+  api.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
+      .end((err, res) => {
+        if (err || (res.body.code !== 0)) callback(new Error('Unable to create new Pad'));
 
-    callback(padID);
-  })
-}
+        callback(padID);
+      });
+};
 
-var setHTML = function(padID, html, callback) {
-  api.get('/api/'+apiVersion+'/setHTML?apikey='+apiKey+"&padID="+padID+"&html="+html)
-  .end(function(err, res){
-    if(err || (res.body.code !== 0)) callback(new Error("Unable to set pad HTML"));
+var setHTML = function (padID, html, callback) {
+  api.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
+      .end((err, res) => {
+        if (err || (res.body.code !== 0)) callback(new Error('Unable to set pad HTML'));
 
-    callback(null, padID);
-  })
-}
+        callback(null, padID);
+      });
+};
 
-var getHTMLEndPointFor = function(padID, callback) {
-  return '/api/'+apiVersion+'/getHTML?apikey='+apiKey+"&padID="+padID;
-}
+var getHTMLEndPointFor = function (padID, callback) {
+  return `/api/${apiVersion}/getHTML?apikey=${apiKey}&padID=${padID}`;
+};
 
 
-var buildHTML = function(body) {
-  return "<html><body>" + body + "</body></html>"
-}
-
+var buildHTML = function (body) {
+  return `<html><body>${body}</body></html>`;
+};
