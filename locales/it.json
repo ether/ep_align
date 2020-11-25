@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"ep_align.left": "Sinistra",
-	"ep_align.right": "Destra",
-	"ep_align.justify": "Giustificato"
+	"ep_align.toolbar.left.title": "Sinistra",
+	"ep_align.toolbar.right.title": "Destra",
+	"ep_align.toolbar.justify.title": "Giustificato"
 }

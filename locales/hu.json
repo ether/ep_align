@@ -5,7 +5,7 @@
 		]
 	},
 	"ep_align.align": "Illesztés",
-	"ep_align.left": "Balra igazítás",
-	"ep_align.right": "Jobbra igazítás",
-	"ep_align.justify": "Sorkizárt"
+	"ep_align.toolbar.left.title": "Balra igazítás",
+	"ep_align.toolbar.right.title": "Jobbra igazítás",
+	"ep_align.toolbar.justify.title": "Sorkizárt"
 }

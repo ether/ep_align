@@ -5,8 +5,8 @@
 		]
 	},
 	"ep_align.align": "Порамни",
-	"ep_align.left": "Лево",
-	"ep_align.center": "По средина",
-	"ep_align.right": "Десно",
-	"ep_align.justify": "Порамни пасус"
+	"ep_align.toolbar.left.title": "Лево",
+	"ep_align.toolbar.center.title": "По средина",
+	"ep_align.toolbar.right.title": "Десно",
+	"ep_align.toolbar.justify.title": "Порамни пасус"
 }

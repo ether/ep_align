@@ -5,8 +5,8 @@
 		]
 	},
 	"ep_align.align": "Alinhar",
-	"ep_align.left": "Esquerda",
-	"ep_align.center": "Centro",
-	"ep_align.right": "Direita",
-	"ep_align.justify": "Justificar"
+	"ep_align.toolbar.left.title": "Esquerda",
+	"ep_align.toolbar.center.title": "Centro",
+	"ep_align.toolbar.right.title": "Direita",
+	"ep_align.toolbar.justify.title": "Justificar"
 }

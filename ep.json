@@ -4,6 +4,7 @@
       "name": "main",
       "client_hooks": {
         "aceEditEvent": "ep_align/static/js/index",
+        "postToolbarInit": "ep_align/static/js/index",
         "aceDomLineProcessLineAttributes": "ep_align/static/js/index",
         "postAceInit": "ep_align/static/js/index",
         "aceInitialized": "ep_align/static/js/index",
@@ -15,6 +16,7 @@
         "eejsBlock_editbarMenuLeft": "ep_align/index",
         "collectContentPre": "ep_align/static/js/shared",
         "collectContentPost": "ep_align/static/js/shared",
+        "padInitToolbar": "ep_align/index",
         "getLineHTMLForExport": "ep_align/index"
       }
     }
