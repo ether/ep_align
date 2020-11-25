@@ -1,7 +1,5 @@
-var _, $, jQuery;
-
-var $ = require('ep_etherpad-lite/static/js/rjquery').$;
-var _ = require('ep_etherpad-lite/static/js/underscore');
+const $ = require('ep_etherpad-lite/static/js/rjquery').$;
+const _ = require('ep_etherpad-lite/static/js/underscore');
 
 // All our tags are block elements, so we just return them.
 var tags = ['left', 'center', 'justify', 'right'];
@@ -20,10 +18,12 @@ exports.postAceInit = function (hook, context) {
       }, 'insertalign', true);
     }
   });
+
+  return;
 };
 
 // On caret position change show the current align
-exports.aceEditEvent = function (hook, call, cb) {
+exports.aceEditEvent = function (hook, call) {
   // If it's not a click or a key event and the text hasn't changed then do nothing
   const cs = call.callstack;
   if (!(cs.type == 'handleClick') && !(cs.type == 'handleKeyEvent') && !(cs.docTextChanged)) {
@@ -33,7 +33,7 @@ exports.aceEditEvent = function (hook, call, cb) {
   if (cs.type == 'setBaseText' || cs.type == 'setup') return false;
 
   // It looks like we should check to see if this section has this attribute
-  setTimeout(() => { // avoid race condition..
+  return setTimeout(() => { // avoid race condition..
     const attributeManager = call.documentAttributeManager;
     const rep = call.rep;
     let firstLine, lastLine;
@@ -62,6 +62,8 @@ exports.aceEditEvent = function (hook, call, cb) {
         // $("#align-selection").val(ind); // TODO commnented this out
       }
     });
+
+    return;
   }, 250);
 };
 
@@ -119,4 +121,36 @@ function doInsertAlign(level) {
 exports.aceInitialized = function (hook, context) {
   const editorInfo = context.editorInfo;
   editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
+
+  return;
+}
+
+exports.postToolbarInit = function (hook_name, context) {
+  const editbar = context.toolbar; // toolbar is actually editbar - http://etherpad.org/doc/v1.5.7/#index_editbar
+
+  editbar.registerCommand('alignLeft', function () {
+    align(context, 0);
+  });
+
+  editbar.registerCommand('alignCenter',  function () {
+    align(context, 1);
+  });
+
+  editbar.registerCommand('alignJustify',  function () {
+    align(context, 2);
+  });
+
+  editbar.registerCommand('alignRight',  function () {
+    align(context, 3);
+  });
+
+  return true;
 };
+
+function align(context, alignment){
+  context.ace.callWithAce(function(ace){
+    ace.ace_doInsertAlign(alignment);
+    ace.ace_focus();
+  },'insertalign' , true);
+}
+

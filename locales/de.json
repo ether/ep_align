@@ -4,6 +4,6 @@
 	},
 	"ep_align.align": "Ausrichtung",
 	"ep_align.left": "Linksbündig",
-	"ep_align.right": "Rechtsbündig",
-	"ep_align.justify": "Blocksatz"
+	"ep_align.toolbar.right.title": "Rechtsbündig",
+	"ep_align.toolbar.justify.title": "Blocksatz"
 }

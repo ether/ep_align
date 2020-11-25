@@ -5,8 +5,8 @@
 		]
 	},
 	"ep_align.align": "Ratnayış",
-	"ep_align.left": "Çep",
-	"ep_align.center": "Merkez",
-	"ep_align.right": "Raşt",
-	"ep_align.justify": "Heq"
+	"ep_align.toolbar.left.title": "Çep",
+	"ep_align.toolbar.center.title": "Merkez",
+	"ep_align.toolbar.right.title": "Raşt",
+	"ep_align.toolbar.justify.title": "Heq"
 }

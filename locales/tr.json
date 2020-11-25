@@ -5,8 +5,8 @@
 		]
 	},
 	"ep_align.align": "Hizalama",
-	"ep_align.left": "Sol",
-	"ep_align.center": "Merkez",
-	"ep_align.right": "Sağ",
-	"ep_align.justify": "Hak"
+	"ep_align.toolbar.left.title": "Sol",
+	"ep_align.toolbar.center.title": "Merkez",
+	"ep_align.toolbar.right.title": "Sağ",
+	"ep_align.toolbar.justify.title": "Hak"
 }

@@ -5,7 +5,7 @@
 		]
 	},
 	"ep_align.align": "Uitlijnen",
-	"ep_align.left": "Links",
-	"ep_align.right": "Rechts",
-	"ep_align.justify": "Uitvullen"
+	"ep_align.toolbar.left.title": "Links",
+	"ep_align.toolbar.right.title": "Rechts",
+	"ep_align.toolbar.justify.title": "Uitvullen"
 }
