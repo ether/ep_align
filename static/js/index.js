@@ -1,14 +1,14 @@
-const $ = require('ep_etherpad-lite/static/js/rjquery').$;
+'use strict';
+
 const _ = require('ep_etherpad-lite/static/js/underscore');
 
 // All our tags are block elements, so we just return them.
-var tags = ['left', 'center', 'justify', 'right'];
-exports.aceRegisterBlockElements = function () {
-  return tags;
-};
+const tags = ['left', 'center', 'justify', 'right'];
+
+exports.aceRegisterBlockElements = () => tags;
 
 // Bind the event handler to the toolbar buttons
-exports.postAceInit = function (hook, context) {
+exports.postAceInit = (hookName, context) => {
   $('body').on('click', '.ep_align', function () {
     const value = $(this).data('align');
     const intValue = parseInt(value, 10);
@@ -23,25 +23,24 @@ exports.postAceInit = function (hook, context) {
 };
 
 // On caret position change show the current align
-exports.aceEditEvent = function (hook, call) {
+exports.aceEditEvent = (hook, call) => {
   // If it's not a click or a key event and the text hasn't changed then do nothing
   const cs = call.callstack;
-  if (!(cs.type == 'handleClick') && !(cs.type == 'handleKeyEvent') && !(cs.docTextChanged)) {
+  if (!(cs.type === 'handleClick') && !(cs.type === 'handleKeyEvent') && !(cs.docTextChanged)) {
     return false;
   }
   // If it's an initial setup event then do nothing..
-  if (cs.type == 'setBaseText' || cs.type == 'setup') return false;
+  if (cs.type === 'setBaseText' || cs.type === 'setup') return false;
 
   // It looks like we should check to see if this section has this attribute
   return setTimeout(() => { // avoid race condition..
     const attributeManager = call.documentAttributeManager;
     const rep = call.rep;
-    let firstLine, lastLine;
     const activeAttributes = {};
     // $("#align-selection").val(-2); // TODO commented this out
 
-    firstLine = rep.selStart[0];
-    lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
+    const firstLine = rep.selStart[0];
+    const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
     let totalNumberOfLines = 0;
 
     _(_.range(firstLine, lastLine + 1)).each((line) => {
@@ -58,7 +57,7 @@ exports.aceEditEvent = function (hook, call) {
     $.each(activeAttributes, (k, attr) => {
       if (attr.count === totalNumberOfLines) {
         // show as active class
-        const ind = tags.indexOf(k);
+        // const ind = tags.indexOf(k);
         // $("#align-selection").val(ind); // TODO commnented this out
       }
     });
@@ -68,16 +67,15 @@ exports.aceEditEvent = function (hook, call) {
 };
 
 // Our align attribute will result in a heaading:left.... :left class
-exports.aceAttribsToClasses = function (hook, context) {
-  if (context.key == 'align') {
+exports.aceAttribsToClasses = (hook, context) => {
+  if (context.key === 'align') {
     return [`align:${context.value}`];
   }
 };
 
 // Here we convert the class align:left into a tag
-exports.aceDomLineProcessLineAttributes = function (name, context) {
+exports.aceDomLineProcessLineAttributes = (name, context) => {
   const cls = context.cls;
-  const domline = context.domline;
   const alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
   let tagIndex;
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
@@ -103,10 +101,8 @@ function doInsertAlign(level) {
     return;
   }
 
-  let firstLine, lastLine;
-
-  firstLine = rep.selStart[0];
-  lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
+  const firstLine = rep.selStart[0];
+  const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
   _(_.range(firstLine, lastLine + 1)).each((i) => {
     if (level >= 0) {
       documentAttributeManager.setAttributeOnLine(i, 'align', tags[level]);
@@ -118,39 +114,36 @@ function doInsertAlign(level) {
 
 
 // Once ace is initialized, we set ace_doInsertAlign and bind it to the context
-exports.aceInitialized = function (hook, context) {
+exports.aceInitialized = (hook, context) => {
   const editorInfo = context.editorInfo;
   editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
-
   return;
-}
+};
 
-exports.postToolbarInit = function (hook_name, context) {
+const align = (context, alignment) => {
+  context.ace.callWithAce((ace) => {
+    ace.ace_doInsertAlign(alignment);
+    ace.ace_focus();
+  }, 'insertalign', true);
+};
+
+exports.postToolbarInit = (hookName, context) => {
   const editbar = context.toolbar; // toolbar is actually editbar - http://etherpad.org/doc/v1.5.7/#index_editbar
-
-  editbar.registerCommand('alignLeft', function () {
+  editbar.registerCommand('alignLeft', () => {
     align(context, 0);
   });
 
-  editbar.registerCommand('alignCenter',  function () {
+  editbar.registerCommand('alignCenter', () => {
     align(context, 1);
   });
 
-  editbar.registerCommand('alignJustify',  function () {
+  editbar.registerCommand('alignJustify', () => {
     align(context, 2);
   });
 
-  editbar.registerCommand('alignRight',  function () {
+  editbar.registerCommand('alignRight', () => {
     align(context, 3);
   });
 
   return true;
 };
-
-function align(context, alignment){
-  context.ace.callWithAce(function(ace){
-    ace.ace_doInsertAlign(alignment);
-    ace.ace_focus();
-  },'insertalign' , true);
-}
-

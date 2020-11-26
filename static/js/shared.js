@@ -1,3 +1,5 @@
+'use strict';
+
 const _ = require('ep_etherpad-lite/static/js/underscore');
 
 const tags = ['left', 'center', 'justify', 'right'];
