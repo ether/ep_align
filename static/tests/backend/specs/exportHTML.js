@@ -88,7 +88,7 @@ describe('export alignment to HTML', function () {
           .expect((res) => {
             const html = res.body.data.html;
             const expectedHTML =
-              '<p style=\'text-align:right\'>Hello world</p><br><br></body></html>'
+              '<p style=\'text-align:right\'>Hello world</p><br><br></body></html>';
             if (html.indexOf(expectedHTML) === -1) throw new Error('No center tag detected');
           })
           .end(done);
