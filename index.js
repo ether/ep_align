@@ -34,7 +34,8 @@ const _analyzeLine = (alineAttrs, apool) => {
 exports.getLineHTMLForExport = async (hookName, context) => {
   const align = _analyzeLine(context.attribLine, context.apool);
   if (align) {
-    context.lineContent = `<p style='text-align:${align}'>${Security.escapeHTML(context.text.substring(1))}</p>`;
+    context.lineContent =
+      `<p style='text-align:${align}'>${Security.escapeHTML(context.text.substring(1))}</p>`;
     return `<p style='text-align:${align}'>${Security.escapeHTML(context.text.substring(1))}</p>`;
   }
 };

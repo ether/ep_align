@@ -81,8 +81,10 @@ exports.aceDomLineProcessLineAttributes = (name, context) => {
   if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0) {
     const tag = tags[tagIndex];
+    const styles =
+      `width:100%;margin:0 auto;list-style-position:inside;display:block;text-align:${tag}`;
     const modifier = {
-      preHtml: `<${tag} style="width:100%;margin:0 auto;list-style-position:inside;display:block;text-align:${tag}">`,
+      preHtml: `<${tag} style="${styles}">`,
       postHtml: `</${tag}>`,
       processedMarker: true,
     };
@@ -91,30 +93,29 @@ exports.aceDomLineProcessLineAttributes = (name, context) => {
   return [];
 };
 
-// Find out which lines are selected and assign them the align attribute.
-// Passing a level >= 0 will set a alignment on the selected lines, level < 0
-// will remove it
-function doInsertAlign(level) {
-  const rep = this.rep;
-  const documentAttributeManager = this.documentAttributeManager;
-  if (!(rep.selStart && rep.selEnd) || (level >= 0 && tags[level] === undefined)) {
-    return;
-  }
-
-  const firstLine = rep.selStart[0];
-  const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
-  _(_.range(firstLine, lastLine + 1)).each((i) => {
-    if (level >= 0) {
-      documentAttributeManager.setAttributeOnLine(i, 'align', tags[level]);
-    } else {
-      documentAttributeManager.removeAttributeOnLine(i, 'align');
-    }
-  });
-}
-
 
 // Once ace is initialized, we set ace_doInsertAlign and bind it to the context
 exports.aceInitialized = (hook, context) => {
+  // Passing a level >= 0 will set a alignment on the selected lines, level < 0
+  // will remove it
+  function doInsertAlign(level) {
+    const rep = this.rep;
+    const documentAttributeManager = this.documentAttributeManager;
+    if (!(rep.selStart && rep.selEnd) || (level >= 0 && tags[level] === undefined)) {
+      return;
+    }
+
+    const firstLine = rep.selStart[0];
+    const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
+    _(_.range(firstLine, lastLine + 1)).each((i) => {
+      if (level >= 0) {
+        documentAttributeManager.setAttributeOnLine(i, 'align', tags[level]);
+      } else {
+        documentAttributeManager.removeAttributeOnLine(i, 'align');
+      }
+    });
+  }
+
   const editorInfo = context.editorInfo;
   editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
   return;

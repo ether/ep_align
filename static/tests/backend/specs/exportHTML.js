@@ -1,13 +1,11 @@
-const supertest = require('ep_etherpad-lite/node_modules/supertest');
-const fs = require('fs');
-const path = require('path');
-const request = require('ep_etherpad-lite/node_modules/request');
+'use strict';
+
 const utils = require('../utils.js');
-apiKey = utils.apiKey,
-codeToBe0 = utils.codeToBe0,
-api = utils.api,
-apiVersion = utils.apiVersion,
-randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
+
+const apiKey = utils.apiKey;
+const api = utils.api;
+const apiVersion = utils.apiVersion;
+const randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
 describe('export alignment to HTML', function () {
   let padID;
@@ -39,7 +37,9 @@ describe('export alignment to HTML', function () {
       api.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
-            if (html.indexOf("<p style='text-align:center'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+            const expectedHTML =
+              '<p style=\'text-align:center\'>Hello world</p><br><br></body></html>';
+            if (html.indexOf(expectedHTML) === -1) throw new Error('No center tag detected');
           })
           .end(done);
     });
@@ -62,7 +62,9 @@ describe('export alignment to HTML', function () {
       api.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
-            if (html.indexOf("<p style='text-align:justify'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+            const expectedHTML =
+              '<p style=\'text-align:justify\'>Hello world</p><br><br></body></html>';
+            if (html.indexOf(expectedHTML) === -1) throw new Error('No center tag detected');
           })
           .end(done);
     });
@@ -85,7 +87,9 @@ describe('export alignment to HTML', function () {
       api.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
-            if (html.indexOf("<p style='text-align:right'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+            const expectedHTML =
+              '<p style=\'text-align:right\'>Hello world</p><br><br></body></html>'
+            if (html.indexOf(expectedHTML) === -1) throw new Error('No center tag detected');
           })
           .end(done);
     });
@@ -108,7 +112,9 @@ describe('export alignment to HTML', function () {
       api.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
-            if (html.indexOf("<p style='text-align:left'>Hello world</p><br><br></body></html>") === -1) throw new Error('No center tag detected');
+            const expectedHTML =
+              '<p style=\'text-align:left\'>Hello world</p><br><br></body></html>';
+            if (html.indexOf(expectedHTML) === -1) throw new Error('No center tag detected');
           })
           .end(done);
     });

@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Align Localization', function () {
   // create a new pad with comment before each test run
   beforeEach(function (cb) {
@@ -25,7 +27,7 @@ describe('Align Localization', function () {
       console.log($(this).attr('data-l10n-id'), $(this).attr('title'));
       const $key = $(this).attr('data-l10n-id');
       const $title = $(this).attr('title');
-      console.log($title == buttonTranslations[$key]);
+      console.log($title === buttonTranslations[$key]);
       expect($title).to.be(buttonTranslations[$key]);
 
       if (index === ($buttons.length - 1)) {
@@ -53,7 +55,7 @@ describe('Align Localization', function () {
     // hide settings again
     $settingsButton.click();
 
-    helper.waitFor(() => chrome$('.buttonicon-bold').parent()[0].title == boldTitles[lang])
+    helper.waitFor(() => chrome$('.buttonicon-bold').parent()[0].title === boldTitles[lang])
         .done(callback);
   };
 });

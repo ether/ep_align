@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Alignment of Text', function () {
   // create a new pad before each test run
   beforeEach(function (cb) {
@@ -26,11 +28,14 @@ describe('Alignment of Text', function () {
     const $button = chrome$('.ep_align_center');
     $button.click();
 
-    // ace creates a new dom element when you press a button, so just get the first text element again
+    // ace creates a new dom element when you press a button
+    // so just get the first text element again
     const $newFirstTextElement = inner$('div').first().first();
     const $alignedSpanStyles = $newFirstTextElement.children().first().attr('style');
 
-    const hasAlignment = ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 || $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
+    const hasAlignment =
+      ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 ||
+       $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
 
     // expect it to be aligned correctly
     expect(hasAlignment).to.be(true);
@@ -56,11 +61,14 @@ describe('Alignment of Text', function () {
     const $button = chrome$('.ep_align_left');
     $button.click();
 
-    // ace creates a new dom element when you press a button, so just get the first text element again
+    // ace creates a new dom element when you press a button
+    // so just get the first text element again
     const $newFirstTextElement = inner$('div').first().first();
     const $alignedSpanStyles = $newFirstTextElement.children().first().attr('style');
 
-    const hasAlignment = ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 || $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
+    const hasAlignment =
+      ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 ||
+       $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
 
     // expect it to be aligned correctly
     expect(hasAlignment).to.be(true);
@@ -86,11 +94,14 @@ describe('Alignment of Text', function () {
     const $button = chrome$(`.ep_align_${alignment}`);
     $button.click();
 
-    // ace creates a new dom element when you press a button, so just get the first text element again
+    // ace creates a new dom element when you press a button
+    // so just get the first text element again
     const $newFirstTextElement = inner$('div').first().first();
     const $alignedSpanStyles = $newFirstTextElement.children().first().attr('style');
 
-    const hasAlignment = ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 || $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
+    const hasAlignment =
+      ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 ||
+       $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
 
     // expect it to be aligned correctly
     expect(hasAlignment).to.be(true);
@@ -116,11 +127,14 @@ describe('Alignment of Text', function () {
     const $button = chrome$(`.ep_align_${alignment}`);
     $button.click();
 
-    // ace creates a new dom element when you press a button, so just get the first text element again
+    // ace creates a new dom element when you press a button
+    // so just get the first text element again
     const $newFirstTextElement = inner$('div').first().first();
     const $alignedSpanStyles = $newFirstTextElement.children().first().attr('style');
 
-    const hasAlignment = ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 || $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
+    const hasAlignment =
+      ($alignedSpanStyles.indexOf(`text-align: ${alignment}`) !== -1 ||
+       $alignedSpanStyles.indexOf(`text-align:${alignment}`) !== -1);
 
     // expect it to be aligned correctly
     expect(hasAlignment).to.be(true);
