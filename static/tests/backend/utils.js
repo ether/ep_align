@@ -1,3 +1,4 @@
+'use strict';
 const appUrl = 'http://localhost:9001';
 const apiVersion = 1;
 
@@ -6,14 +7,6 @@ const api = supertest(appUrl);
 const randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
 const apiKey = require('ep_etherpad-lite/node/handler/APIHandler.js').exportedForTestingOnly.apiKey;
-
-// Functions to validate API responses:
-const codeToBe = function (expectedCode, res) {
-  if (res.body.code !== expectedCode) {
-    throw new Error(`Code should be ${expectedCode}, was ${res.body.code}`);
-  }
-};
-
 
 // Creates a pad and returns the pad id. Calls the callback when finished.
 const createPad = function (done) {

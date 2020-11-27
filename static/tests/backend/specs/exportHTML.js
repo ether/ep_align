@@ -7,6 +7,35 @@ const api = utils.api;
 const apiVersion = utils.apiVersion;
 const randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
+// Creates a pad and returns the pad id. Calls the callback when finished.
+const createPad = function (padID, callback) {
+  api.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
+      .end((err, res) => {
+        if (err || (res.body.code !== 0)) callback(new Error('Unable to create new Pad'));
+
+        callback(padID);
+      });
+};
+
+const setHTML = function (padID, html, callback) {
+  api.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
+      .end((err, res) => {
+        if (err || (res.body.code !== 0)) callback(new Error('Unable to set pad HTML'));
+
+        callback(null, padID);
+      });
+};
+
+const getHTMLEndPointFor = function (padID, callback) {
+  return `/api/${apiVersion}/getHTML?apikey=${apiKey}&padID=${padID}`;
+};
+
+
+const buildHTML = function (body) {
+  return `<html><body>${body}</body></html>`;
+};
+
+
 describe('export alignment to HTML', function () {
   let padID;
   let html;
@@ -21,10 +50,8 @@ describe('export alignment to HTML', function () {
   });
 
   context('when pad text is center aligned', function () {
-    before(function () {
-      html = function () {
-        return buildHTML('<center>Hello world</center>');
-      };
+    before(async function () {
+      html = () => buildHTML('<center>Hello world</center>');
     });
 
     it('returns ok', function (done) {
@@ -46,10 +73,8 @@ describe('export alignment to HTML', function () {
   });
 
   context('when pad text is justified aligned', function () {
-    before(function () {
-      html = function () {
-        return buildHTML('<justify>Hello world</justify>');
-      };
+    before(async function () {
+      html = () => buildHTML('<justify>Hello world</justify>');
     });
 
     it('returns ok', function (done) {
@@ -71,10 +96,8 @@ describe('export alignment to HTML', function () {
   });
 
   context('when pad text is right aligned', function () {
-    before(function () {
-      html = function () {
-        return buildHTML('<right>Hello world</right>');
-      };
+    before(async function () {
+      html = () => buildHTML('<right>Hello world</right>');
     });
 
     it('returns ok', function (done) {
@@ -96,10 +119,8 @@ describe('export alignment to HTML', function () {
   });
 
   context('when pad text is left aligned', function () {
-    before(function () {
-      html = function () {
-        return buildHTML('<left>Hello world</left>');
-      };
+    before(async function () {
+      html = () => buildHTML('<left>Hello world</left>');
     });
 
     it('returns ok', function (done) {
@@ -120,32 +141,3 @@ describe('export alignment to HTML', function () {
     });
   });
 });
-
-
-// Creates a pad and returns the pad id. Calls the callback when finished.
-var createPad = function (padID, callback) {
-  api.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
-      .end((err, res) => {
-        if (err || (res.body.code !== 0)) callback(new Error('Unable to create new Pad'));
-
-        callback(padID);
-      });
-};
-
-var setHTML = function (padID, html, callback) {
-  api.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
-      .end((err, res) => {
-        if (err || (res.body.code !== 0)) callback(new Error('Unable to set pad HTML'));
-
-        callback(null, padID);
-      });
-};
-
-var getHTMLEndPointFor = function (padID, callback) {
-  return `/api/${apiVersion}/getHTML?apikey=${apiKey}&padID=${padID}`;
-};
-
-
-var buildHTML = function (body) {
-  return `<html><body>${body}</body></html>`;
-};
