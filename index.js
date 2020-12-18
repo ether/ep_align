@@ -2,7 +2,6 @@
 
 const eejs = require('ep_etherpad-lite/node/eejs/');
 const Changeset = require('ep_etherpad-lite/static/js/Changeset');
-const Security = require('ep_etherpad-lite/static/js/security');
 const settings = require('ep_etherpad-lite/node/utils/Settings');
 
 exports.eejsBlock_editbarMenuLeft = (hookName, args, cb) => {
@@ -34,9 +33,22 @@ const _analyzeLine = (alineAttrs, apool) => {
 exports.getLineHTMLForExport = async (hookName, context) => {
   const align = _analyzeLine(context.attribLine, context.apool);
   if (align) {
-    context.lineContent =
-      `<p style='text-align:${align}'>${Security.escapeHTML(context.text.substring(1))}</p>`;
-    return `<p style='text-align:${align}'>${Security.escapeHTML(context.text.substring(1))}</p>`;
+    if (context.text.indexOf('*') === 0) {
+      context.lineContent = context.lineContent.replace('*', '');
+    }
+    const heading = context.lineContent.match(/<h([1-6])([^>]+)?>/);
+
+    if (heading) {
+      if (heading.indexOf('style=') === -1) {
+        context.lineContent = context.lineContent.replace('>', ` style='text-align:${align}'>`);
+      } else {
+        context.lineContent = context.lineContent.replace('style=', `style='text-align:${align} `);
+      }
+    } else {
+      context.lineContent =
+        `<p style='text-align:${align}'>${context.lineContent}</p>`;
+    }
+    return context.lineContent;
   }
 };
 
