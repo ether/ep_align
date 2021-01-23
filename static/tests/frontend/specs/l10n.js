@@ -40,7 +40,7 @@ describe('Align Localization', function () {
   it('localizes toolbar buttons when Etherpad language is changed', function (done) {
     const buttonTranslations = {
       'ep_align.toolbar.left.title': 'À gauche',
-      'ep_align.toolbar.center.title': 'Centre',
+      'ep_align.toolbar.center.title': 'Centré',
       'ep_align.toolbar.right.title': 'Droite',
       'ep_align.toolbar.justify.title': 'Justifié',
     };
