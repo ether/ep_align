@@ -41,7 +41,7 @@ describe('Align Localization', function () {
     const buttonTranslations = {
       'ep_align.toolbar.left.title': 'À gauche',
       'ep_align.toolbar.center.title': 'Centré',
-      'ep_align.toolbar.right.title': 'Droite',
+      'ep_align.toolbar.right.title': 'À droite',
       'ep_align.toolbar.justify.title': 'Justifié',
     };
     const chrome$ = helper.padChrome$;
