@@ -1,9 +1,12 @@
 'use strict';
 
-const _ = require('ep_etherpad-lite/static/js/underscore');
-
 // All our tags are block elements, so we just return them.
 const tags = ['left', 'center', 'justify', 'right'];
+
+const range = (start, end) => Array.from(
+    Array(Math.abs(end - start) + 1),
+    (_, i) => start + i
+);
 
 exports.aceRegisterBlockElements = () => tags;
 
@@ -12,7 +15,7 @@ exports.postAceInit = (hookName, context) => {
   $('body').on('click', '.ep_align', function () {
     const value = $(this).data('align');
     const intValue = parseInt(value, 10);
-    if (!_.isNaN(intValue)) {
+    if (!isNaN(intValue)) {
       context.ace.callWithAce((ace) => {
         ace.ace_doInsertAlign(intValue);
       }, 'insertalign', true);
@@ -43,7 +46,7 @@ exports.aceEditEvent = (hook, call) => {
     const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
     let totalNumberOfLines = 0;
 
-    _(_.range(firstLine, lastLine + 1)).each((line) => {
+    range(firstLine, lastLine + 1).forEach((line) => {
       totalNumberOfLines++;
       const attr = attributeManager.getAttributeOnLine(line, 'align');
       if (!activeAttributes[attr]) {
@@ -78,7 +81,7 @@ exports.aceDomLineProcessLineAttributes = (name, context) => {
   const cls = context.cls;
   const alignType = /(?:^| )align:([A-Za-z0-9]*)/.exec(cls);
   let tagIndex;
-  if (alignType) tagIndex = _.indexOf(tags, alignType[1]);
+  if (alignType) tagIndex = tags.indexOf(alignType[1]);
   if (tagIndex !== undefined && tagIndex >= 0) {
     const tag = tags[tagIndex];
     const styles =
@@ -107,7 +110,7 @@ exports.aceInitialized = (hook, context) => {
 
     const firstLine = rep.selStart[0];
     const lastLine = Math.max(firstLine, rep.selEnd[0] - ((rep.selEnd[1] === 0) ? 1 : 0));
-    _(_.range(firstLine, lastLine + 1)).each((i) => {
+    range(firstLine, lastLine + 1).forEach((i) => {
       if (level >= 0) {
         documentAttributeManager.setAttributeOnLine(i, 'align', tags[level]);
       } else {
@@ -117,7 +120,7 @@ exports.aceInitialized = (hook, context) => {
   }
 
   const editorInfo = context.editorInfo;
-  editorInfo.ace_doInsertAlign = _(doInsertAlign).bind(context);
+  editorInfo.ace_doInsertAlign = doInsertAlign.bind(context);
   return;
 };
 
