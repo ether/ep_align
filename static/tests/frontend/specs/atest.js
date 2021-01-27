@@ -14,6 +14,7 @@ describe('Alignment of Text', function () {
   // Check Highlighting text and setting it to un-bold works
 
   it('Center Aligns the Text', function (done) {
+    this.timeout(100);
     const alignment = 'center';
     const inner$ = helper.padInner$;
     const chrome$ = helper.padChrome$;
@@ -47,6 +48,7 @@ describe('Alignment of Text', function () {
   });
 
   it('Left Aligns the Text', function (done) {
+    this.timeout(100);
     const alignment = 'left';
     const inner$ = helper.padInner$;
     const chrome$ = helper.padChrome$;
@@ -80,6 +82,7 @@ describe('Alignment of Text', function () {
   });
 
   it('Right Aligns the Text', function (done) {
+    this.timeout(100);
     const alignment = 'right';
     const inner$ = helper.padInner$;
     const chrome$ = helper.padChrome$;
@@ -113,6 +116,7 @@ describe('Alignment of Text', function () {
   });
 
   it('Justify Aligns the Text', function (done) {
+    this.timeout(100);
     const alignment = 'justify';
     const inner$ = helper.padInner$;
     const chrome$ = helper.padChrome$;
