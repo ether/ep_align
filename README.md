@@ -1,3 +1,4 @@
+![Publish Status](https://github.com/ether/ep_align/workflows/Node.js%20Package/badge.svg) ![Publish Status](https://github.com/ether/ep_align/workflows/Node.js%20Package/badge.svg)
 ![Publish Status](https://github.com/ether/ep_align/workflows/Node.js%20Package/badge.svg)
 ![Test Status](https://github.com/ether/ep_align/workflows/Backend%20tests/badge.svg)
 
