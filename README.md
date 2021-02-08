@@ -1,3 +1,8 @@
+![Publish Status](https://github.com/ether/ep_align/workflows/Node.js%20Package/badge.svg)
+![Test Status](https://github.com/ether/ep_align/workflows/Backend%20tests/badge.svg)
+
+![Screenshot](https://user-images.githubusercontent.com/220864/107214131-5c3dd600-6a01-11eb-82d9-b2d67ec8ae93.png)
+
 # What is this?
 An Etherpad Plugin to apply Text Alignment in a pad.  Currently supports:
 
