@@ -8,7 +8,7 @@ const apiVersion = utils.apiVersion;
 const randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
 // Creates a pad and returns the pad id. Calls the callback when finished.
-const createPad = function (padID, callback) {
+const createPad = (padID, callback) => {
   api.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
       .end((err, res) => {
         if (err || (res.body.code !== 0)) callback(new Error('Unable to create new Pad'));
@@ -17,7 +17,7 @@ const createPad = function (padID, callback) {
       });
 };
 
-const setHTML = function (padID, html, callback) {
+const setHTML = (padID, html, callback) => {
   api.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
       .end((err, res) => {
         if (err || (res.body.code !== 0)) callback(new Error('Unable to set pad HTML'));
@@ -26,15 +26,10 @@ const setHTML = function (padID, html, callback) {
       });
 };
 
-const getHTMLEndPointFor = function (padID, callback) {
-  return `/api/${apiVersion}/getHTML?apikey=${apiKey}&padID=${padID}`;
-};
+const getHTMLEndPointFor =
+    (padID, callback) => `/api/${apiVersion}/getHTML?apikey=${apiKey}&padID=${padID}`;
 
-
-const buildHTML = function (body) {
-  return `<html><body>${body}</body></html>`;
-};
-
+const buildHTML = (body) => `<html><body>${body}</body></html>`;
 
 describe('export alignment to HTML', function () {
   let padID;
