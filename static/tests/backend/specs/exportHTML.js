@@ -1,15 +1,15 @@
 'use strict';
 
-const utils = require('../utils.js');
+const common = require('ep_etherpad-lite/tests/backend/common');
 
-const apiKey = utils.apiKey;
-const api = utils.api;
-const apiVersion = utils.apiVersion;
+let agent;
+const apiKey = common.apiKey;
+const apiVersion = 1;
 const randomString = require('ep_etherpad-lite/static/js/pad_utils').randomString;
 
 // Creates a pad and returns the pad id. Calls the callback when finished.
 const createPad = (padID, callback) => {
-  api.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
+  agent.get(`/api/${apiVersion}/createPad?apikey=${apiKey}&padID=${padID}`)
       .end((err, res) => {
         if (err || (res.body.code !== 0)) callback(new Error('Unable to create new Pad'));
 
@@ -18,7 +18,7 @@ const createPad = (padID, callback) => {
 };
 
 const setHTML = (padID, html, callback) => {
-  api.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
+  agent.get(`/api/${apiVersion}/setHTML?apikey=${apiKey}&padID=${padID}&html=${html}`)
       .end((err, res) => {
         if (err || (res.body.code !== 0)) callback(new Error('Unable to set pad HTML'));
 
@@ -35,6 +35,8 @@ describe('export alignment to HTML', function () {
   let padID;
   let html;
 
+  before(async function () { agent = await common.init(); });
+
   // create a new pad before each test run
   beforeEach(function (done) {
     padID = randomString(5);
@@ -50,13 +52,13 @@ describe('export alignment to HTML', function () {
     });
 
     it('returns ok', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect('Content-Type', /json/)
           .expect(200, done);
     });
 
     it('returns HTML with Subscript HTML tags', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
             const expectedHTML =
@@ -73,13 +75,13 @@ describe('export alignment to HTML', function () {
     });
 
     it('returns ok', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect('Content-Type', /json/)
           .expect(200, done);
     });
 
     it('returns HTML with Subscript HTML tags', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
             const expectedHTML =
@@ -96,13 +98,13 @@ describe('export alignment to HTML', function () {
     });
 
     it('returns ok', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect('Content-Type', /json/)
           .expect(200, done);
     });
 
     it('returns HTML with Subscript HTML tags', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
             const expectedHTML =
@@ -119,13 +121,13 @@ describe('export alignment to HTML', function () {
     });
 
     it('returns ok', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect('Content-Type', /json/)
           .expect(200, done);
     });
 
     it('returns HTML with Subscript HTML tags', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect((res) => {
             const html = res.body.data.html;
             const expectedHTML =
@@ -142,7 +144,7 @@ describe('export alignment to HTML', function () {
     });
 
     it('returns ok', function (done) {
-      api.get(getHTMLEndPointFor(padID))
+      agent.get(getHTMLEndPointFor(padID))
           .expect('Content-Type', /json/)
           .expect(200, done);
     });
@@ -150,7 +152,7 @@ describe('export alignment to HTML', function () {
     it('returns HTML with Subscript HTML tags', function (done) {
       try {
         require.resolve('ep_headings2'); // eslint-disable-line node/no-missing-require
-        api.get(getHTMLEndPointFor(padID))
+        agent.get(getHTMLEndPointFor(padID))
             .expect((res) => {
               const html = res.body.data.html;
               const expectedHTML =
