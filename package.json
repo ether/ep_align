@@ -3,6 +3,7 @@
     "name": "John McLear",
     "email": "john@mclear.co.uk"
   },
+  "license": "Apache2",
   "bugs": {
     "url": "https://github.com/ether/ep_align/issues"
   },
