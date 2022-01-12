@@ -2,6 +2,7 @@
   "parts": [
     {
       "name": "main",
+      "post": ["ep_headings2/main"],
       "client_hooks": {
         "aceEditEvent": "ep_align/static/js/index",
         "postToolbarInit": "ep_align/static/js/index",
