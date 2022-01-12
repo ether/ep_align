@@ -148,4 +148,40 @@ describe('Alignment of Text', function () {
 
     done();
   });
+
+  it('works with headings', async function () {
+    // skip this test in case ep_headings2 isn't installed
+    if (!helper.padChrome$.window.clientVars.plugins.plugins.ep_headings2) this.skip();
+
+    const alignment = 'center';
+    const inner$ = helper.padInner$;
+    const chrome$ = helper.padChrome$;
+
+    // get the first text element out of the inner iframe
+    const $firstTextElement = inner$('div').first();
+
+    // select this text element
+    $firstTextElement.sendkeys('{selectall}');
+
+    // make it a heading
+    chrome$('#heading-selection').val('0');
+    chrome$('#heading-selection').change();
+
+    // get the center button and click it
+    const $button = chrome$('.ep_align_center');
+    $button.click();
+
+    // ace creates a new dom element when you press a button
+    // so just get the first text element again
+    const $newFirstTextElement = inner$('div').first().first();
+    const $alignedSpanStyles = $newFirstTextElement.children().first().attr('style');
+
+    await helper.waitForPromise(() => {
+      const alignmentExpr = `text-align: ?${alignment}`;
+      return $alignedSpanStyles.search(alignmentExpr) !== -1;
+    });
+
+    // make sure the text hasn't changed
+    expect($newFirstTextElement.text()).to.eql($firstTextElement.text());
+  });
 });
