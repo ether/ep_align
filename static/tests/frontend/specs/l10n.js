@@ -4,7 +4,7 @@ describe('Align Localization', function () {
   const changeEtherpadLanguageTo = function (lang, callback) {
     const boldTitles = {
       en: 'Bold (Ctrl+B)',
-      fr: 'Gras (Ctrl+B)',
+      fr: 'Gras (Ctrl + B)',
     };
     const chrome$ = helper.padChrome$;
 
