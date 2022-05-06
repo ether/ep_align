@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Align Localization', function () {
-  const changeEtherpadLanguageTo = function (lang, callback) {
+  const changeEtherpadLanguageTo = async (lang) => {
     const boldTitles = {
       en: 'Bold (Ctrl+B)',
       fr: 'Gras (Ctrl + B)',
@@ -20,24 +20,23 @@ describe('Align Localization', function () {
     // hide settings again
     $settingsButton.click();
 
-    helper.waitFor(() => chrome$('.buttonicon-bold').parent()[0].title === boldTitles[lang])
-        .done(callback);
+    await helper.waitForPromise(
+        () => chrome$('.buttonicon-bold').parent()[0].title === boldTitles[lang]);
   };
 
   // create a new pad with comment before each test run
-  beforeEach(function (cb) {
-    helper.newPad(() => {
-      changeEtherpadLanguageTo('fr', cb);
-    });
+  beforeEach(async function () {
     this.timeout(60000);
+    await helper.aNewPad();
+    await changeEtherpadLanguageTo('fr');
   });
 
   // ensure we go back to English to avoid breaking other tests:
-  after(function (cb) {
-    changeEtherpadLanguageTo('en', cb);
+  after(async function () {
+    await changeEtherpadLanguageTo('en');
   });
 
-  it('localizes toolbar buttons when Etherpad language is changed', function (done) {
+  it('localizes toolbar buttons when Etherpad language is changed', async function () {
     const buttonTranslations = {
       'ep_align.toolbar.left.title': 'À gauche',
       'ep_align.toolbar.center.title': 'Centré',
@@ -52,10 +51,6 @@ describe('Align Localization', function () {
       const $title = $(this).attr('title');
       console.log($title === buttonTranslations[$key]);
       expect($title).to.be(buttonTranslations[$key]);
-
-      if (index === ($buttons.length - 1)) {
-        return done();
-      }
     });
   });
 });
