@@ -151,7 +151,7 @@ describe('export alignment to HTML', function () {
 
     it('returns HTML with Subscript HTML tags', function (done) {
       try {
-        require.resolve('ep_headings2'); // eslint-disable-line node/no-missing-require
+        require.resolve('ep_headings2'); // eslint-disable-line n/no-missing-require
         agent.get(getHTMLEndPointFor(padID))
             .expect((res) => {
               const html = res.body.data.html;
