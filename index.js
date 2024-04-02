@@ -63,7 +63,7 @@ exports.padInitToolbar = (hookName, args, cb) => {
 
   const alignCenterButton = toolbar.button({
     command: 'alignCenter',
-    localizationId: 'ep_align.toolbar.middle.title',
+    localizationId: 'ep_align.toolbar.center.title',
     class: 'buttonicon buttonicon-align-center ep_align ep_align_center',
   });
 
