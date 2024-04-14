@@ -53,6 +53,12 @@ jobs:
       # in dependencies or devDependencies.
       -
         run: pnpm i
+      # Workaround based on https://github.com/pnpm/pnpm/issues/3141
+      - name: Set publishing config
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
       # `npm publish` must come after `git push` otherwise there is a race
       # condition: If two PRs are merged back-to-back then master/main will be
       # updated with the commits from the second PR before the first PR's
@@ -65,8 +71,6 @@ jobs:
       # the second's will succeed.
       -
         run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       #-
       #  name: Add package to etherpad organization
       #  run: pnpm access grant read-write etherpad:developers
