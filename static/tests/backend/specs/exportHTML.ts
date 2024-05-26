@@ -136,7 +136,7 @@ describe('export alignment to HTML', function () {
         .expect(200);
     });
 
-    it('returns HTML with Subscript HTML tags', async function (done) {
+    it('returns HTML with Subscript HTML tags', async function () {
       const res = await agent.get(getHTMLEndPointFor(padID))
         .set("Authorization", await generateJWTToken())
       const html = res.body.data.html;
