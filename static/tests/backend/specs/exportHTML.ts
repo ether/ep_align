@@ -136,7 +136,7 @@ describe('export alignment to HTML', function () {
         .expect(200);
     });
 
-    it('returns HTML with Subscript HTML tags', async function (done) {
+    it('returns HTML with Subscript HTML tags', async function () {
       const res = await agent.get(getHTMLEndPointFor(padID))
         .set("Authorization", await generateJWTToken())
       const html = res.body.data.html;
@@ -170,8 +170,8 @@ describe('export alignment to HTML', function () {
                     reject(err);
                   } else {
                     const html = res.body.data.html;
-                    const expectedHTML = '<h1 style=\'text-align:left\'>Hello world</h1><br><br></body></html>';
-                    if (html.indexOf(expectedHTML) === -1) {
+                    const expectedHTML = /<h1 +style='text-align:left'>Hello world<\/h1><br><br><\/body><\/html>/;
+                    if (html.search(expectedHTML) === -1) {
                       reject(new Error('No left tag detected'));
                     } else {
                       resolve();
