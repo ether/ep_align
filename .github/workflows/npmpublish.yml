@@ -71,5 +71,8 @@ jobs:
       # the second's will succeed.
       -
         run: pnpm publish
-      - name: Add package to etherpad organization
-        run: pnpm access grant read-write etherpad:developers
+      #-
+      #  name: Add package to etherpad organization
+      #  run: pnpm access grant read-write etherpad:developers
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
