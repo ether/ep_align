@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"SZ475"
+		]
+	},
+	"ep_align.align": "Aliniere",
+	"ep_align.toolbar.left.title": "Stânga",
+	"ep_align.toolbar.center.title": "Centru",
+	"ep_align.toolbar.right.title": "Dreapta",
+	"ep_align.toolbar.justify.title": "Justifică"
+}

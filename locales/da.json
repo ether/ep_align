@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Peterleth",
 			"Saederup92"
 		]
 	},
+	"ep_align.align": "Juster",
 	"ep_align.toolbar.left.title": "Venstre",
-	"ep_align.toolbar.right.title": "Højre"
+	"ep_align.toolbar.center.title": "Centrer",
+	"ep_align.toolbar.right.title": "Højre",
+	"ep_align.toolbar.justify.title": "Justér"
 }
