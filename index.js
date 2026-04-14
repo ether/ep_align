@@ -7,9 +7,11 @@ const settings = require('ep_etherpad-lite/node/utils/Settings');
 exports.eejsBlock_editbarMenuLeft = (hookName, args, cb) => {
   if (args.renderContext.isReadOnly) return cb();
 
-  for (const button of ['alignLeft', 'alignJustify', 'alignCenter', 'alignRight']) {
-    if (JSON.stringify(settings.toolbar).indexOf(button) > -1) {
-      return cb();
+  if (settings.toolbar) {
+    for (const button of ['alignLeft', 'alignJustify', 'alignCenter', 'alignRight']) {
+      if (JSON.stringify(settings.toolbar).indexOf(button) > -1) {
+        return cb();
+      }
     }
   }
 
