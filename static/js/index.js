@@ -9,6 +9,7 @@ const range = (start, end) => Array.from(
 );
 
 exports.aceRegisterBlockElements = () => tags;
+exports.aceRegisterLineAttributes = () => ['align'];
 
 // Bind the event handler to the toolbar buttons
 exports.postAceInit = (hookName, context) => {
