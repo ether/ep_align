@@ -1,4 +1,4 @@
-# ep_align
+# Text Alignment for Etherpad
 
 Adds text alignment buttons (left, center, justify, right) to the Etherpad toolbar, with HTML export support.
 
