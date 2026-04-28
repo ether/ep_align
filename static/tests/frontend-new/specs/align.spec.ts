@@ -15,11 +15,18 @@ test.describe('Alignment of Text', () => {
       await writeToPad(page, 'aligned text');
       await selectAllText(page);
 
-      await page.locator(`.ep_align_${alignment}`).click();
+      // force:true bypasses the #toolbar-overlay div that intercepts pointer
+      // events after a text selection (same pattern as clearAuthorship() in
+      // ep_etherpad-lite's padHelper).
+      await page.locator(`.ep_align_${alignment}`).click({force: true});
 
-      const span = padBody.locator('div').first().locator('span').first();
-      const style = await span.getAttribute('style') ?? '';
-      expect(style).toMatch(new RegExp(`text-align:\\s*${alignment}`));
+      // ep_align wraps the line content in a block element (<left>, <center>,
+      // <right>, <justify>) carrying the text-align style — see
+      // aceDomLineProcessLineAttributes in static/js/index.js. The inner
+      // <span> has no style of its own, so assert against the wrapper.
+      const wrapper = padBody.locator('div').first().locator(alignment);
+      await expect(wrapper).toHaveAttribute(
+          'style', new RegExp(`text-align:\\s*${alignment}`));
       await expect(padBody.locator('div').first()).toHaveText('aligned text');
     });
   }
