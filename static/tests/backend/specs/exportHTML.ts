@@ -146,6 +146,33 @@ describe('export alignment to HTML', function () {
     });
   });
 
+  context('when imported HTML uses style="text-align"', function () {
+    // Regression for the round-trip: getLineHTMLForExport already emits
+    // <p style="text-align:..."> on export, so importing that HTML (or
+    // any HTML produced by mammoth from a DOCX) needs collectContentPre
+    // to read the style attribute. Without the fix, alignment was lost
+    // on import even though the legacy <left>/<center>/<right>/<justify>
+    // tags worked.
+    for (const align of ['left', 'center', 'right', 'justify']) {
+      it(`preserves text-align:${align} from inline style`, async function () {
+        // Set the pad HTML using `style="text-align:..."` directly.
+        const padHtml = `<p style="text-align:${align}">Hello world</p>`;
+        const newPadID = randomString(5);
+        await createPad(newPadID);
+        await setHTML(newPadID, buildHTML(padHtml));
+        const res = await agent.get(getHTMLEndPointFor(newPadID))
+            .set('Authorization', await generateJWTToken());
+        const html = res.body.data.html;
+        const expected =
+            new RegExp(`<p +style='text-align:${align}'>Hello world</p>`);
+        if (html.search(expected) === -1) {
+          throw new Error(
+              `Expected ${expected} in re-exported HTML, got: ${html}`);
+        }
+      });
+    }
+  });
+
   context('when pad text is heading', function () {
     before(async function () {
       html = () => buildHTML('<h1><left>Hello world</left></h1>');
