@@ -25,7 +25,7 @@
     "url": "https://etherpad.org/"
   },
   "dependencies": {
-    "ep_plugin_helpers": "^0.5.0"
+    "ep_plugin_helpers": "^0.5.2"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
