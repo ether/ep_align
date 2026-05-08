@@ -31,6 +31,25 @@ test.describe('Alignment of Text', () => {
     });
   }
 
+  test('toolbar buttons have no <button> nested inside <a>', async ({page}) => {
+    const padBody = await getPadBody(page);
+    await padBody.click();
+    // Run on the page (toolbar) frame, not the inner pad frame.
+    const offenders = await page.locator('.ep_align a button').count();
+    expect(offenders).toBe(0);
+    // Each align <a> exposes the click target with an accessible name.
+    // aria-label is populated by html10n at runtime (no author-supplied
+    // value — see html10n.ts:665-678) and tagged with
+    // data-l10n-aria-label="true" once it has run, so wait for that
+    // marker before asserting the localized aria-label is non-empty.
+    for (const dir of ['left', 'center', 'right', 'justify'] as const) {
+      const a = page.locator(`a.ep_align_${dir}`);
+      await expect(a).toHaveAttribute('role', 'button');
+      await expect(a).toHaveAttribute('data-l10n-aria-label', 'true');
+      await expect(a).toHaveAttribute('aria-label', /.+/);
+    }
+  });
+
   // The legacy `it('works with headings', ...)` test is intentionally
   // omitted: it required runtime detection of ep_headings2 being installed
   // (`helper.padChrome$.window.clientVars.plugins.plugins.ep_headings2`),
