@@ -1,23 +1,19 @@
 'use strict';
 
-const eejs = require('ep_etherpad-lite/node/eejs/');
 const Changeset = require('ep_etherpad-lite/static/js/Changeset');
 const settings = require('ep_etherpad-lite/node/utils/Settings');
+const {template} = require('ep_plugin_helpers');
 
-exports.eejsBlock_editbarMenuLeft = (hookName, args, cb) => {
-  if (args.renderContext.isReadOnly) return cb();
+const TOOLBAR_BUTTONS = ['alignLeft', 'alignJustify', 'alignCenter', 'alignRight'];
 
-  if (settings.toolbar) {
-    for (const button of ['alignLeft', 'alignJustify', 'alignCenter', 'alignRight']) {
-      if (JSON.stringify(settings.toolbar).indexOf(button) > -1) {
-        return cb();
-      }
-    }
-  }
-
-  args.content += eejs.require('ep_align/templates/editbarButtons.ejs');
-  return cb();
-};
+exports.eejsBlock_editbarMenuLeft = template('ep_align/templates/editbarButtons.ejs', {
+  skip: (args) => {
+    if (args.renderContext.isReadOnly) return true;
+    if (!settings.toolbar) return false;
+    const serialized = JSON.stringify(settings.toolbar);
+    return TOOLBAR_BUTTONS.some((b) => serialized.indexOf(b) > -1);
+  },
+});
 
 const _analyzeLine = (alineAttrs, apool) => {
   let alignment = null;
@@ -31,7 +27,7 @@ const _analyzeLine = (alineAttrs, apool) => {
   return alignment;
 };
 
-// line, apool,attribLine,text
+// line, apool, attribLine, text
 exports.getLineHTMLForExport = async (hookName, context) => {
   const align = _analyzeLine(context.attribLine, context.apool);
   if (align) {
