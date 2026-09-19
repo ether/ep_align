@@ -15,6 +15,11 @@ exports.eejsBlock_editbarMenuLeft = template('ep_align/templates/editbarButtons.
   },
 });
 
+// ep_file_menu_toolbar: paragraph formatting group of the Format menu. The
+// entries reuse the '.ep_align' click handler the editbar buttons already
+// bind, so they work wherever the toolbar buttons do.
+exports.eejsBlock_dd_format_block = template('ep_align/templates/fileMenu.ejs');
+
 const _analyzeLine = (alineAttrs, apool) => {
   let alignment = null;
   if (alineAttrs) {

@@ -13,7 +13,10 @@ exports.aceRegisterLineAttributes = () => ['align'];
 
 // Bind the event handler to the toolbar buttons
 exports.postAceInit = (hookName, context) => {
-  $('body').on('click', '.ep_align', function () {
+  $('body').on('click', '.ep_align', function (e) {
+    // The file menu entries are <a href="#"> links; without this the click
+    // would also jump the browser to the top of the page.
+    e.preventDefault();
     const value = $(this).data('align');
     const intValue = parseInt(value, 10);
     if (!isNaN(intValue)) {

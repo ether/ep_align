@@ -16,6 +16,7 @@
       },
       "hooks": {
         "eejsBlock_editbarMenuLeft": "ep_align/index",
+        "eejsBlock_dd_format_block": "ep_align/index",
         "collectContentPre": "ep_align/static/js/shared",
         "collectContentPost": "ep_align/static/js/shared",
         "padInitToolbar": "ep_align/index",
