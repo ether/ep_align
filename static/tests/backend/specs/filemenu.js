@@ -6,8 +6,8 @@ const path = require('path');
 const ejs = require('ep_etherpad-lite/node_modules/ejs');
 
 const root = path.resolve(__dirname, '..', '..', '..', '..');
-const render = (name) =>
-  ejs.render(fs.readFileSync(path.join(root, 'templates', name), 'utf8'), {});
+const templates = path.join(root, 'templates');
+const render = (name) => ejs.render(fs.readFileSync(path.join(templates, name), 'utf8'), {});
 const locales = JSON.parse(fs.readFileSync(path.join(root, 'locales', 'en.json'), 'utf8'));
 const epJson = JSON.parse(fs.readFileSync(path.join(root, 'ep.json'), 'utf8'));
 
@@ -26,12 +26,12 @@ const alignments = (html) => {
 describe(__filename, function () {
   let fileMenu;
 
-  before(function () {
+  before(async function () {
     fileMenu = render('fileMenu.ejs');
   });
 
   // https://github.com/ether/ether-plugins/issues/51
-  it('file menu offers every alignment', function () {
+  it('file menu offers every alignment', async function () {
     assert.deepEqual(Object.keys(alignments(fileMenu)).sort(), [
       'ep_align.toolbar.center.title',
       'ep_align.toolbar.justify.title',
@@ -40,19 +40,19 @@ describe(__filename, function () {
     ]);
   });
 
-  it('file menu and editbar agree on the align values', function () {
+  it('file menu and editbar agree on the align values', async function () {
     // postAceInit binds one '.ep_align' handler that reads data-align, so an
     // entry with the wrong value would silently align the wrong way.
     assert.deepEqual(alignments(fileMenu), alignments(render('editbarButtons.ejs')));
   });
 
-  it('the entries are localized', function () {
+  it('the entries are localized', async function () {
     for (const id of Object.keys(alignments(fileMenu))) {
       assert(locales[id], `${id} is missing from locales/en.json`);
     }
   });
 
-  it('registers the entries in the paragraph formatting group', function () {
+  it('registers the entries in the paragraph formatting group', async function () {
     // dd_format_block is the block right below Outdent in
     // ep_file_menu_toolbar's Format menu.
     assert.equal(epJson.parts[0].hooks.eejsBlock_dd_format_block, 'ep_align/index');
