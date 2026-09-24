@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       ep_plugin_helpers:
-        specifier: ^0.6.7
-        version: 0.6.7(supports-color@8.1.1)
+        specifier: ^0.6.8
+        version: 0.6.8(supports-color@8.1.1)
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.10
@@ -447,9 +447,9 @@ packages:
     resolution: {integrity: sha512-Qohcme7V1inbAfvjItgw0EaxVX5q2rdVEZHRBrEQdRZTssLDGsL8Lwrznl8oQ/6kuTJONLaDcGjkNP247XEhcA==}
     engines: {node: '>=10.13.0'}
 
-  ep_plugin_helpers@0.6.7:
-    resolution: {integrity: sha512-xYCaSSEjdYK0JJ+DmgqQQVezdfBdrLKVhz/OQuj3Cw7ULX88ecbSjNMywx/yCQpcxWecfVZoFYW/EwyadmJEYw==}
-    engines: {node: '>=18.0.0'}
+  ep_plugin_helpers@0.6.8:
+    resolution: {integrity: sha512-0lmYho5YCIHEF65NNDty68Ezt2wwzD7Pler3EjSZtkR6qRNUIPKI0IK0RdUBi24Muok6TGuEVo2ViEp/0sEChA==}
+    engines: {node: '>=22.0.0'}
 
   es-abstract@1.24.2:
     resolution: {integrity: sha512-2FpH9Q5i2RRwyEP1AylXe6nYLR5OhaJTZwmlcP0dL/+JCbgg7yyEo/sEK6HeGZRf3dFpWwThaRHVApXSkW3xeg==}
@@ -1826,7 +1826,7 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.3.2
 
-  ep_plugin_helpers@0.6.7(supports-color@8.1.1):
+  ep_plugin_helpers@0.6.8(supports-color@8.1.1):
     dependencies:
       log4js: 6.9.1(supports-color@8.1.1)
     transitivePeerDependencies:
